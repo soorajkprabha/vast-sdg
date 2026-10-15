@@ -242,3 +242,15 @@ tr.total th,tr.total td{font-weight:700;background:var(--alt)}
 #data-table{min-width:640px}
 .table-wrap{max-height:520px;overflow:auto}
 .table-wrap thead th{position:sticky;top:0}
+
+.compare-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:16px 0}
+.compare-cards div{background:var(--card);border:1px solid var(--border);border-left:6px solid var(--border);border-radius:12px;padding:18px}
+.compare-cards .good{border-left-color:#4C9F38}
+.compare-cards .bad{border-left-color:#E5243B}
+.compare-cards strong{display:block;font-size:1.6rem;color:var(--brand)}
+.compare-cards span{color:var(--muted);font-size:.9rem}
+td.good{color:#2f7a1f;font-weight:700}
+td.bad{color:#C5192D;font-weight:700}
+@media (prefers-color-scheme:dark){td.good{color:#7ed957}td.bad{color:#ff7b8a}}
+.table-wrap.short{max-height:none}
+#compare-table th small{font-weight:400;color:var(--muted)}

@@ -64,3 +64,7 @@ Put photos in `images/gallery/` (JPEG, ideally under 400 KB each) and list them 
 
 ## Solar page sections
 `solar.html` has four tabs (Overview, Analytics, Impact, Data) driven by one period filter. Plant names, capacities, meters and commissioning dates are in `data/solar.json` (`plants`). CUF, specific yield, seasonal figures and the impact equivalents are computed in `solar.js`; the illustrative conversion factors are in the `F` constant at the top and are disclosed on the page.
+
+## Campus photos
+- `images/campus-front.jpg` is the home-page banner and a gallery photo.
+- Save the aerial campus photo as `images/campus-aerial.jpg` and it appears behind the solar page header automatically (the green gradient shows until then). Add it to `data/gallery.json` too if you want it in the gallery.

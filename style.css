@@ -369,3 +369,6 @@ body[data-page=solar] .hero-tag{color:#ffe08a}
 .bar-gap{margin:14px 0 0;padding:12px 14px;border-left:5px solid #FCC30B;background:var(--alt);border-radius:6px;font-size:.9rem}
 .bar-gap a{color:var(--brand)}
 @media (max-width:600px){.bar-row{grid-template-columns:30px 1fr 28px}.bar-row .bar-track{grid-column:2/4;grid-row:2}.bar-label{grid-column:2}.bar-val{grid-column:3;grid-row:1}.bar-none{font-size:.68rem}}
+
+/* aerial campus photo behind the solar hero; falls back to the plain gradient while the file is missing */
+body[data-page=solar] .solar-hero{background:linear-gradient(90deg,rgba(5,38,25,.93) 0%,rgba(6,47,30,.78) 45%,rgba(6,47,30,.25) 100%),url(images/campus-aerial.jpg) center 55%/cover,linear-gradient(115deg,#0c3828,#12643d 64%,#1b7a48)}

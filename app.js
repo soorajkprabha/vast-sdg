@@ -98,12 +98,13 @@ async function initHome() {
 
   renderStats(activities);
   loadInitiatives().then(list => { $("#home-initiatives").innerHTML = list.map(initiativeCard).join(""); }).catch(console.error);
-  $("#latest").innerHTML = activities.slice(0, 6).map(a => activityCard(a, activities.indexOf(a))).join("");
+  $("#latest").innerHTML = activities.slice(0, 6).map(a => activityCard(a, activities.indexOf(a))).join("")
+    || `<p class="empty">No activities have been added yet.</p>`;
   $("#reports-list").innerHTML = reports.map(r => `
     <a class="report" href="${esc(r.file)}" download>
       <span class="pdf">PDF</span>
       <span><strong>${esc(r.title)}</strong><br><small>${esc(r.year)} · ${esc(r.description)}</small></span>
-    </a>`).join("");
+    </a>`).join("") || `<p class="empty">No reports have been uploaded yet.</p>`;
   wireModal(activities);
 }
 

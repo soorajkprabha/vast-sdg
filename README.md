@@ -29,7 +29,7 @@ Put the PDF in `reports/` and add an entry to `data/reports.json`.
 ## Deploy
 Upload the folder to GitHub Pages, Netlify or any static host.
 
-Delete the entries whose titles start with "SAMPLE" before publishing.
+`data/activities.json` and `data/reports.json` are empty; add real entries (or use the admin page once Firebase is configured).
 
 ## Logo and official SDG icons
 - Save the college logo as `images/logo.png` (shown in the header; a "V" mark appears if missing).

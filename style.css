@@ -382,3 +382,5 @@ nav a.current,nav a.current:hover{background:linear-gradient(135deg,#00689D,#0A9
 body[data-page=solar] nav a.current,body[data-page=solar] nav a.current:hover{background:linear-gradient(135deg,#0f6b3e,#16834b);box-shadow:0 6px 14px rgba(22,131,75,.3)}
 @media (prefers-color-scheme:dark){nav a.current,nav a.current:hover{color:#0f172a;background:linear-gradient(135deg,#6cc0ee,#93d3f5)}body[data-page=solar] nav a.current,body[data-page=solar] nav a.current:hover{color:#06210f;background:linear-gradient(135deg,#4fd08a,#7be3a8)}}
 @media (max-width:860px){nav a{padding:12px 16px;width:100%;border-radius:12px}nav a:hover{transform:none}}
+
+.ver{opacity:.6;font-size:.8em}

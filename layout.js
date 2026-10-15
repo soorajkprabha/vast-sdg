@@ -24,6 +24,6 @@ export function mountLayout(page) {
     nav.addEventListener("click", e => { if (e.target.tagName === "A") nav.classList.remove("open"); });
   }
   if (footer) {
-    footer.innerHTML = `<div class="container">© ${new Date().getFullYear()} Vidya Academy of Science and Technology. SDG icons and colours belong to the United Nations. · <a href="index.html#reports">Reports</a> · <a href="admin.html">Admin</a></div>`;
+    footer.innerHTML = `<div class="container">© ${new Date().getFullYear()} Vidya Academy of Science and Technology. SDG icons and colours belong to the United Nations. · <a href="index.html#reports">Reports</a> · <a href="admin.html">Admin</a> · <span class="ver" title="Site version">v${(document.querySelector('link[href*="style.css"]')?.getAttribute("href").split("v=")[1]) || "dev"}</span></div>`;
   }
 }

@@ -61,3 +61,6 @@ Put photos in `images/gallery/` (JPEG, ideally under 400 KB each) and list them 
     { "file": "images/gallery/solar-roof.jpg", "caption": "100 kWp rooftop array", "facility": "solar", "year": "2018", "credit": "VAST" }
 
 `facility` is one of `solar`, `sewage`, `rainwater`, `biogas` or `campus`. The first photo for a facility also appears on that facility's page. Only use photos the college owns or has permission to publish.
+
+## Solar page sections
+`solar.html` has four tabs (Overview, Analytics, Impact, Data) driven by one period filter. Plant names, capacities, meters and commissioning dates are in `data/solar.json` (`plants`). CUF, specific yield, seasonal figures and the impact equivalents are computed in `solar.js`; the illustrative conversion factors are in the `F` constant at the top and are disclosed on the page.

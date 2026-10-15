@@ -7,24 +7,26 @@
  "plants": [
   {
    "id": "p1",
-   "name": "15 kWp plant",
+   "name": "South Block",
    "kWp": 15,
    "color": "#FD9D24",
    "commissionedYear": 2014
   },
   {
    "id": "p2",
-   "name": "100 kWp plant",
+   "name": "Auditorium",
    "kWp": 100,
    "color": "#0A97D9",
-   "commissionedYear": 2018
+   "commissionedYear": 2018,
+   "meter": "Mf-40"
   },
   {
    "id": "p3",
-   "name": "120 kWp plant",
+   "name": "Administration Block",
    "kWp": 120,
    "color": "#4C9F38",
-   "commissioned": "2026-04-22"
+   "commissioned": "2026-04-22",
+   "meter": "Mf-50"
   }
  ],
  "readings": [

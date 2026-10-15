@@ -9,50 +9,107 @@
 <body data-page="solar">
 <header class="site-header" id="header"></header>
 <main>
-  <section class="page-hero solar-hero">
-    <div class="container">
-      <p class="eyebrow">Sustainability · SDG 7 · SDG 13</p>
-      <h1>Solar power statistics</h1>
-      <p class="lead">Generation from our three solar plants (15, 100 and 120 kWp) compared with electricity drawn from the grid.</p>
+  <section class="solar-hero">
+    <div class="container hero-row">
+      <div>
+        <span class="hero-tag"><span aria-hidden="true">☀</span> POWERING A GREENER CAMPUS</span>
+        <h1>Energy from the sun.<br><em>Impact for tomorrow.</em></h1>
+        <p>Generation from our three solar installations compared with electricity drawn from KSEB, and what every unit means for the climate.</p>
+        <div class="hero-pills"><span>⚡ 235 kWp installed capacity</span><span>🌿 3 solar installations</span><span>🏫 South Block · Auditorium · Administration Block</span></div>
+      </div>
+      <div class="hero-orb" aria-hidden="true"><span>☼</span><small>SOLAR<br>POWER</small></div>
     </div>
-    <div class="rainbow" aria-hidden="true"></div>
   </section>
 
   <p id="error" class="container error" hidden>Could not load solar data. Open the site through a web server (see README).</p>
-  <div id="sample-banner" class="container callout" hidden><strong>Sample data.</strong> These readings are placeholders for layout only. Real figures appear once the college's data is added.</div>
+  <div id="sample-banner" class="container callout" hidden><strong>Sample data.</strong> These readings are placeholders for layout only.</div>
 
-  <section class="container section" id="solar-body" hidden>
-    <div class="toolbar">
-      <div><h2>Overview</h2><p id="period-note" class="muted small"></p></div>
-      <label class="period">Period <select id="period"></select></label>
+  <div id="solar-body" hidden>
+    <nav class="solar-tabs" aria-label="Solar sections">
+      <div class="container tabs-row" role="tablist">
+        <button role="tab" data-tab="overview" class="on"><i aria-hidden="true">☀️</i>Overview</button>
+        <button role="tab" data-tab="analytics"><i aria-hidden="true">📈</i>Analytics</button>
+        <button role="tab" data-tab="impact"><i aria-hidden="true">🌱</i>Impact</button>
+        <button role="tab" data-tab="data"><i aria-hidden="true">🗂️</i>Data</button>
+      </div>
+    </nav>
+
+    <div class="container solar-main">
+      <div class="period-panel">
+        <div class="period-label"><span class="period-sun" aria-hidden="true">☀</span><div><b>Explore production</b><small>Choose a period; every chart and figure on this page updates together.</small></div></div>
+        <div class="period-controls">
+          <label>Period <select id="period"></select></label>
+          <label>Month <select id="month"></select></label>
+        </div>
+        <div class="period-status"><span class="live-dot"></span><span id="period-note"></span></div>
+      </div>
+
+      <!-- OVERVIEW -->
+      <section id="tab-overview">
+        <div class="big-total"><span>TOTAL SOLAR ENERGY GENERATED</span><b id="big-total"></b><small id="big-sub"></small></div>
+        <div class="grid kpi-grid" id="kpis"></div>
+
+        <div class="section-heading"><span class="eyebrow">BLOCK-WISE BREAKDOWN</span><h2>Where is the energy coming from?</h2><p>Each installation compared for the selected period.</p></div>
+        <div class="plant-grid" id="plants"></div>
+
+        <div class="section-heading"><span class="eyebrow">GENERATION</span><h2>Monthly solar generation</h2><p id="chart-note"></p></div>
+        <div class="chart-card"><div class="legend" id="legend-a"></div><div id="chart-a"></div></div>
+
+        <div class="section-heading"><span class="eyebrow">SOLAR vs KSEB</span><h2>Solar vs grid electricity</h2><p>The percentage under each bar group is the solar share of that period's electricity.</p></div>
+        <div class="chart-card"><div class="legend" id="legend-b"></div><div id="chart-b"></div>
+          <div class="share-row" id="share-row" aria-label="Solar share of consumption per period"></div></div>
+
+        <div id="compare" hidden>
+          <div class="section-heading"><span class="eyebrow">COMMISSIONING IMPACT</span><h2 id="compare-title"></h2><p id="compare-lead"></p></div>
+          <div id="compare-cards" class="compare-cards"></div>
+          <div class="table-wrap short"><table id="compare-table"></table></div>
+          <h3 class="gap-top">KSEB import by month</h3>
+          <div class="chart-card"><div class="legend" id="legend-c"></div><div id="chart-c"></div></div>
+          <p id="compare-note" class="muted small"></p>
+        </div>
+      </section>
+
+      <!-- ANALYTICS -->
+      <section id="tab-analytics" hidden>
+        <div class="section-heading"><span class="eyebrow">TRENDS &amp; INSIGHTS</span><h2>Production analytics</h2><p>Understand energy generation over time.</p></div>
+        <div class="chart-card"><h3 class="card-title">Cumulative solar production (kWh)</h3><div class="legend" id="legend-cum"></div><div id="chart-cum"></div></div>
+
+        <div class="section-heading"><span class="eyebrow">PERIOD PERFORMANCE</span><h2>Period statistics</h2><p>Statistics follow the selected period.</p></div>
+        <div class="grid kpi-grid" id="period-stats"></div>
+
+        <div class="section-heading"><span class="eyebrow">PLANT COMPARISON</span><h2>Compare solar installations</h2><p>Output compared fairly using each plant's installed capacity.</p></div>
+        <div class="table-wrap"><table id="plant-table"></table></div>
+
+        <div class="section-heading"><span class="eyebrow">SAME MONTH, DIFFERENT YEARS</span><h2>Monthly comparison across years</h2><p>Pick a calendar month to see how generation changed year by year.</p></div>
+        <div class="chip-tabs" id="moy-tabs" role="group" aria-label="Month of year"></div>
+        <div class="chart-card"><div class="legend" id="legend-moy"></div><div id="chart-moy"></div></div>
+
+        <div class="section-heading"><span class="eyebrow">SEASONAL CONTEXT</span><h2>Seasonal comparison</h2><p>Summer (Mar–May), Monsoon (Jun–Sep), Winter (Oct–Feb).</p></div>
+        <div class="grid kpi-grid" id="seasons"></div>
+
+        <div class="callout" id="analytics-method"></div>
+      </section>
+
+      <!-- IMPACT -->
+      <section id="tab-impact" hidden>
+        <div class="section-heading"><span class="eyebrow">BEYOND GENERATION</span><h2>Solar energy. Measurable impact.</h2><p>What the campus solar generation could mean for climate, resources and everyday life.</p></div>
+        <div class="impact-hero"><div><span class="eyebrow light">CAMPUS SUSTAINABILITY SNAPSHOT</span><h3>Clean energy powering a greener tomorrow</h3><p>Every unit of solar electricity reduces the need for grid electricity. The equivalents below are illustrative estimates calculated from the readings for the selected period.</p></div><div class="impact-number"><strong id="impact-energy"></strong><span id="impact-sub"></span></div></div>
+        <div class="grid impact-grid" id="impact-grid"></div>
+
+        <div class="section-heading"><span class="eyebrow">SUSTAINABLE DEVELOPMENT GOALS</span><h2>How this connects to the SDGs</h2></div>
+        <div class="sdg-grid" id="sdg-links"></div>
+        <div class="callout" id="impact-method"></div>
+      </section>
+
+      <!-- DATA -->
+      <section id="tab-data" hidden>
+        <div class="section-heading"><span class="eyebrow">TRANSPARENCY &amp; RECORDS</span><h2>Historical production data</h2><p>Search, review and export the monthly readings.</p></div>
+        <div class="bar-tools"><input id="q" type="search" placeholder="Search month (e.g. Mar 26)" aria-label="Search month"><button id="csv" class="btn-outline">Export CSV</button></div>
+        <div class="table-wrap"><table id="data-table"></table></div>
+        <div class="callout" id="method"></div>
+      </section>
     </div>
-    <div class="stats five" id="kpis"></div>
-
-    <h2 class="gap-top">Generation by plant</h2>
-    <div class="plant-grid" id="plants"></div>
-
-    <div id="compare" hidden>
-      <h2 class="gap-top">Before and after the 120 kWp plant</h2>
-      <p id="compare-lead" class="muted"></p>
-      <div id="compare-cards" class="compare-cards"></div>
-      <div class="table-wrap short"><table id="compare-table"></table></div>
-      <h3 class="gap-top">KSEB import by month</h3>
-      <div class="chart-card"><div class="legend" id="legend-c"></div><div id="chart-c"></div></div>
-      <p id="compare-note" class="muted small"></p>
-    </div>
-
-    <h2 class="gap-top">Monthly solar generation</h2>
-    <div class="chart-card"><div class="legend" id="legend-a"></div><p id="chart-note" class="muted small"></p><div id="chart-a"></div></div>
-
-    <h2 class="gap-top">Solar vs grid electricity</h2>
-    <div class="chart-card"><div class="legend" id="legend-b"></div><div id="chart-b"></div>
-      <div class="share-row" id="share-row" aria-label="Solar share of consumption per month"></div></div>
-
-    <div class="toolbar gap-top"><h2>Monthly data</h2><button id="csv" class="btn-outline">Download CSV</button></div>
-    <div class="table-wrap"><table id="data-table"></table></div>
-
-    <div class="callout" id="method"></div>
-  </section>
+  </div>
 </main>
 <footer id="footer"></footer>
 <script type="module" src="solar.js"></script>

@@ -272,3 +272,83 @@ td.bad{color:#C5192D;font-weight:700}
 .lightbox .close{color:#fff}
 .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.15);border:0;color:#fff;font-size:2rem;width:44px;height:64px;cursor:pointer;border-radius:8px}
 #lb-prev{left:8px}#lb-next{right:8px}
+
+/* ===== solar dashboard (design inspired by the Vidya Solar Energy Dashboard) ===== */
+body[data-page=solar]{--g:#16834b;--gd:#0c3828;--y:#f5b82e;--line:#e0e9e2;--bg:#f3f7f4;--card:#fff;--alt:#eaf3ed;--sh:0 12px 34px rgba(19,62,43,.07);background:radial-gradient(ellipse at 8% 5%,#e2f3e8 0,transparent 32%),var(--bg);--brand:#16834b;--border:#e0e9e2}
+@media (prefers-color-scheme:dark){body[data-page=solar]{--bg:#0b1711;--card:#14261d;--alt:#183024;--line:#24392e;--border:#24392e;--g:#4fd08a;--brand:#4fd08a;--sh:0 12px 34px rgba(0,0,0,.35);background:var(--bg)}}
+body[data-page=solar] .solar-hero{background:linear-gradient(115deg,#0c3828,#12643d 64%,#1b7a48);color:#fff;padding:54px 0;position:relative;overflow:hidden}
+body[data-page=solar] .solar-hero::after{content:"";position:absolute;width:380px;height:380px;border:1px solid #ffffff18;border-radius:50%;right:-100px;top:-120px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff06;pointer-events:none}
+.hero-row{display:flex;align-items:center;justify-content:space-between;gap:24px;position:relative;z-index:1}
+.hero-tag{display:inline-flex;gap:8px;align-items:center;background:#ffffff1d;border:1px solid #ffffff38;border-radius:30px;padding:8px 14px;font-size:.7rem;font-weight:800;letter-spacing:1.3px;color:#ffe08a}
+.solar-hero h1{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.08;letter-spacing:-1.2px;margin:18px 0 12px}
+.solar-hero h1 em{font-style:normal;color:#ffd05a}
+.solar-hero p{max-width:520px;color:#e1eee6;margin:0}
+.hero-pills{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}
+.hero-pills span{border-radius:10px;background:#ffffff19;border:1px solid #ffffff2c;padding:9px 12px;font-size:.78rem;font-weight:700}
+.hero-orb{flex:none;width:130px;height:130px;border-radius:50%;background:linear-gradient(145deg,#ffdd77,#f5ae25);color:#15452d;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;box-shadow:0 0 0 14px #ffdd7722,0 0 0 30px #ffdd7710}
+.hero-orb span{font-size:2.6rem;line-height:1}.hero-orb small{font-size:.65rem;letter-spacing:1.5px;text-align:center}
+@media (max-width:700px){.hero-orb{display:none}}
+
+.solar-tabs{position:sticky;top:64px;z-index:8;background:color-mix(in srgb,var(--card) 92%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);box-shadow:0 4px 18px #123d2b0d}
+.tabs-row{display:flex;gap:8px;padding:8px 0;overflow-x:auto}
+.solar-tabs button{display:flex;align-items:center;gap:8px;white-space:nowrap;border:0;background:none;color:var(--muted);font:600 .85rem inherit;font-family:inherit;padding:10px 18px;border-radius:12px;cursor:pointer}
+.solar-tabs button i{font-style:normal}
+.solar-tabs button.on{background:#147b47;color:#fff;box-shadow:0 5px 12px #147b4725}
+.solar-main{padding-top:24px;padding-bottom:36px}
+.solar-main[data-empty] section{display:none}
+
+.period-panel{display:grid;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--sh);margin-bottom:24px}
+.period-label{display:flex;gap:12px;align-items:center}
+.period-sun{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--y);color:#17462e;font-size:1.3rem}
+.period-label small{display:block;color:var(--muted)}
+.period-controls{display:flex;flex-wrap:wrap;gap:14px}
+.period-controls label{display:grid;gap:4px;font-size:.8rem;font-weight:600;color:var(--muted)}
+.period-controls select,.bar-tools input{font:inherit;padding:11px 12px;min-width:170px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--text)}
+.period-controls select:focus,.bar-tools input:focus{outline:2px solid var(--g);border-color:var(--g)}
+.period-status{display:flex;align-items:center;gap:8px;font-size:.85rem;color:var(--muted)}
+.live-dot{width:8px;height:8px;background:#4cc57a;border-radius:50%;box-shadow:0 0 0 4px #4cc57a30}
+
+.section-heading{margin:34px 0 14px}
+.section-heading h2{margin:2px 0 4px;color:var(--text);font-size:1.6rem}
+.section-heading p{margin:0;color:var(--muted)}
+.eyebrow{display:block;color:#278653;font-size:.68rem;font-weight:850;letter-spacing:1.7px}
+.eyebrow.light{color:#b5e7c7}
+.big-total{text-align:center;background:var(--card);border-radius:22px;padding:22px 12px;box-shadow:var(--sh);border-top:5px solid var(--y);color:var(--muted);font-size:.75rem;letter-spacing:.8px;margin-bottom:16px}
+.big-total b{display:block;font-size:clamp(2.2rem,8vw,3.6rem);color:var(--g);letter-spacing:0;line-height:1.1;margin:6px 0 2px}
+.big-total small{font-size:.85rem;letter-spacing:0}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+body[data-page=solar] .card{background:var(--card);border-radius:18px;padding:16px;box-shadow:var(--sh);border:1px solid var(--line)}
+body[data-page=solar] .card h4{margin:0 0 6px;color:var(--muted);font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+body[data-page=solar] .card .v{font-size:1.5rem;font-weight:800}
+body[data-page=solar] .card small{display:block;margin-top:4px;color:var(--muted);font-size:.8rem}
+.card.accent{border-top:5px solid var(--g)}
+.faint{font-weight:500;opacity:.8;text-transform:none;letter-spacing:0}
+
+body[data-page=solar] .plant{border-radius:20px;box-shadow:var(--sh);border:1px solid var(--line);border-top:6px solid var(--c)}
+.plant-sub{margin:0 0 6px;color:var(--muted);font-size:.8rem}
+.dot-sm{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+body[data-page=solar] .chart-card{border-radius:20px;box-shadow:var(--sh);border:1px solid var(--line)}
+.card-title{margin:0 0 8px;font-size:1rem}
+.chip-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.chip-tabs button{font:inherit;font-weight:600;padding:8px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer}
+.chip-tabs button.on{background:#147b47;border-color:#147b47;color:#fff}
+.bar-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+body[data-page=solar] .table-wrap{border-radius:16px;border:1px solid var(--line);background:var(--card)}
+body[data-page=solar] thead th{background:var(--alt)}
+
+.impact-hero{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;background:linear-gradient(115deg,#0c3828,#12643d);color:#fff;border-radius:24px;padding:28px;margin-bottom:16px}
+.impact-hero h3{font-size:1.6rem;margin:6px 0}
+.impact-hero p{margin:0;max-width:520px;color:#d4e9dc}
+.impact-number{text-align:right}
+.impact-number strong{display:block;font-size:2.4rem;color:#ffd05a}
+.impact-number span{font-size:.8rem;color:#d4e9dc}
+.impact-card .ico{font-size:1.6rem}
+.impact-card.wide{grid-column:1/-1;background:linear-gradient(135deg,var(--card),var(--alt));border-color:#b8dfc8}
+.carbon-pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.sdg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.sdg-item{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.sdg-item h4{margin:0 0 4px}.sdg-item p{margin:0;color:var(--muted);font-size:.9rem}
+.sdg-item .chip{flex:none}
+.callout{margin-top:26px}
+@media (max-width:600px){.solar-tabs{top:64px}.period-controls select{min-width:0;width:100%}.period-controls label{flex:1;min-width:140px}}

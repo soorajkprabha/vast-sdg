@@ -372,3 +372,13 @@ body[data-page=solar] .hero-tag{color:#ffe08a}
 
 /* aerial campus photo behind the solar hero; falls back to the plain gradient while the file is missing */
 body[data-page=solar] .solar-hero{background:linear-gradient(90deg,rgba(5,38,25,.93) 0%,rgba(6,47,30,.78) 45%,rgba(6,47,30,.25) 100%),url(images/campus-aerial.jpg) center 55%/cover,linear-gradient(115deg,#0c3828,#12643d 64%,#1b7a48)}
+
+/* navigation pills */
+nav{gap:6px}
+nav a{padding:9px 16px;border-radius:999px;font-size:.92rem;font-weight:600;color:var(--text);border:1px solid transparent;transition:background .18s,color .18s,box-shadow .18s,transform .18s}
+nav a:hover{background:var(--alt);color:var(--brand);border-color:var(--border);transform:translateY(-1px)}
+nav a:focus-visible{outline:3px solid #26BDE2;outline-offset:2px}
+nav a.current,nav a.current:hover{background:linear-gradient(135deg,#00689D,#0A97D9);color:#fff;border-color:transparent;border-bottom:1px solid transparent;box-shadow:0 6px 14px rgba(0,104,157,.28);transform:none}
+body[data-page=solar] nav a.current,body[data-page=solar] nav a.current:hover{background:linear-gradient(135deg,#0f6b3e,#16834b);box-shadow:0 6px 14px rgba(22,131,75,.3)}
+@media (prefers-color-scheme:dark){nav a.current,nav a.current:hover{color:#0f172a;background:linear-gradient(135deg,#6cc0ee,#93d3f5)}body[data-page=solar] nav a.current,body[data-page=solar] nav a.current:hover{color:#06210f;background:linear-gradient(135deg,#4fd08a,#7be3a8)}}
+@media (max-width:860px){nav a{padding:12px 16px;width:100%;border-radius:12px}nav a:hover{transform:none}}

@@ -111,7 +111,6 @@ function render() {
     + `<tr class="total"><th scope="row">Total</th>${data.plants.map(p => `<td>${fmt(sum(rows, r => r[p.id]))}</td>`).join("")}<td>${fmt(t.solar)}</td><td>${fmt(t.exported)}</td><td>${fmt(t.grid)}</td><td>${t.share == null ? "–" : fmt1(t.share) + "%"}</td></tr></tbody>`;
 
   const gaps = [];
-  if (rows.some(r => r.month === "2023-09") && rows.some(r => r.month === "2023-11") && !rows.some(r => r.month === "2023-10")) gaps.push("October 2023 has no reading.");
   if (rows.some(r => !has(r.grid))) gaps.push("Months without total grid-import data are left out of the grid and share figures.");
   $("#method").innerHTML = `<strong>How these numbers are worked out.</strong>
     <ul class="ticks">

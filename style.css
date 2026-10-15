@@ -26,7 +26,7 @@ nav a:hover{color:var(--brand)}
 .menu-btn{display:none;background:none;border:0;font-size:1.5rem;color:inherit;cursor:pointer}
 
 .btn{display:inline-block;padding:12px 24px;border-radius:8px;background:#fff;color:#19486A;font-weight:600;text-decoration:none}
-.hero{background:#19486A;color:#fff;padding:90px 0 0;position:relative}
+.hero{background:linear-gradient(90deg,rgba(25,72,106,.93) 0%,rgba(25,72,106,.72) 55%,rgba(25,72,106,.38) 100%),url(images/campus-front.jpg) center 62%/cover #19486A;color:#fff;padding:90px 0 0;position:relative}
 .hero .container{padding-bottom:80px}
 .hero h1{font-size:clamp(2rem,5vw,3.4rem);max-width:800px}
 .eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;opacity:.8;margin:0 0 12px}
@@ -354,3 +354,5 @@ body[data-page=solar] thead th{background:var(--alt)}
 @media (max-width:600px){.solar-tabs{top:76px}.period-controls select{min-width:0;width:100%}.period-controls label{flex:1;min-width:140px}}
 
 table.kv th{width:32%;background:var(--alt);font-weight:600}
+.hero .eyebrow,.page-hero .eyebrow{color:#cfe8ff}
+body[data-page=solar] .hero-tag{color:#ffe08a}

@@ -90,6 +90,16 @@ const views = {
       + `<tr class="total"><th scope="row">Total</th><td>Middle case about 190 t per year</td><td>about ${Math.round(lo)} to ${Math.round(hi)} t</td></tr>`;
   },
 
+  async about() {
+    const d = await (await fetch("data/institute.json")).json();
+    $("#stats").innerHTML = d.stats.map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
+    $("#overview").innerHTML = `<tbody>${d.overview.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody>`;
+    const ul = (id, list) => { $(id).innerHTML = list.map(x => `<li>${esc(x)}</li>`).join(""); };
+    ul("#ug", d.graduate); ul("#pg", d.postgraduate); ul("#fac", d.facilities); ul("#gov", d.governance);
+    $("#links").innerHTML = d.links.map(([t, u]) => `<a class="report" href="${esc(u)}" target="_blank" rel="noopener"><span class="pdf" style="background:#00689D">↗</span><span><strong>${esc(t)}</strong><br><small>${esc(u.replace("https://", ""))}</small></span></a>`).join("");
+    $("#source").textContent = `Source: ${d.source} Statistics such as placements and admissions are updated each cycle; verify against the college website before quoting.`;
+  },
+
   evidence() {
     const confirm = [
       "Add the date of commissioning for each facility",
@@ -126,6 +136,6 @@ const views = {
 };
 
 (async () => {
-  try { await views[page](page === "evidence" ? null : await loadInitiatives()); }
+  try { await views[page](page === "evidence" || page === "about" ? null : await loadInitiatives()); }
   catch (e) { console.error(e); const el = $("#error"); if (el) el.hidden = false; }
 })();

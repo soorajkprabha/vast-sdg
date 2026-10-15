@@ -1,12 +1,12 @@
 const LINKS = [
   ["index.html", "Home", "home"],
+  ["about.html", "About", "about"],
+  ["index.html#goals", "Goals", "goal"],
   ["initiatives.html", "Initiatives", "initiatives"],
-  ["solar.html", "Solar statistics", "solar"],
+  ["solar.html", "Solar", "solar"],
   ["gallery.html", "Gallery", "gallery"],
   ["sdg-mapping.html", "SDG mapping", "mapping"],
-  ["carbon.html", "Carbon impact", "carbon"],
-  ["index.html#goals", "Goals", "goal"],
-  ["index.html#reports", "Reports", "reports"]
+  ["carbon.html", "Carbon impact", "carbon"]
 ];
 
 export function mountLayout(page) {
@@ -24,6 +24,6 @@ export function mountLayout(page) {
     nav.addEventListener("click", e => { if (e.target.tagName === "A") nav.classList.remove("open"); });
   }
   if (footer) {
-    footer.innerHTML = `<div class="container">© ${new Date().getFullYear()} Vidya Academy of Science and Technology. SDG icons and colours belong to the United Nations. · <a href="admin.html">Admin</a></div>`;
+    footer.innerHTML = `<div class="container">© ${new Date().getFullYear()} Vidya Academy of Science and Technology. SDG icons and colours belong to the United Nations. · <a href="index.html#reports">Reports</a> · <a href="admin.html">Admin</a></div>`;
   }
 }

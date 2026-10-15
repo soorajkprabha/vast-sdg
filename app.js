@@ -44,9 +44,9 @@ function wireModal(activities) {
       <p class="meta">${metaLine(a)}</p>
       ${a.image ? `<img class="full" src="${esc(a.image)}" alt="${esc(a.title)}">` : ""}
       <p>${esc(a.description)}</p>
-      <h3>Outcomes</h3><p>${esc(a.outcomes)}</p>
+      ${a.outcomes ? `<h3>Outcomes</h3><p>${esc(a.outcomes)}</p>` : ""}
       ${a.beneficiaries || a.hours ? `<p class="meta">${[a.beneficiaries ? `<strong>${fmtNum(a.beneficiaries)}</strong> beneficiaries` : "", a.hours ? `<strong>${fmtNum(a.hours)}</strong> volunteer hours` : ""].filter(Boolean).join(" · ")}</p>` : ""}
-      ${a.link ? `<p><a href="${esc(a.link)}">Read more →</a></p>` : ""}`;
+      ${a.link ? `<p><a href="${esc(a.link)}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener"' : ""}>${/^https?:/.test(a.link) ? "Read the full report ↗" : "Read more →"}</a></p>` : ""}`;
     dlg.showModal();
   });
   $("#modal-close").addEventListener("click", () => dlg.close());

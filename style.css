@@ -352,3 +352,5 @@ body[data-page=solar] thead th{background:var(--alt)}
 .sdg-item .chip{flex:none}
 .callout{margin-top:26px}
 @media (max-width:600px){.solar-tabs{top:64px}.period-controls select{min-width:0;width:100%}.period-controls label{flex:1;min-width:140px}}
+
+table.kv th{width:32%;background:var(--alt);font-weight:600}

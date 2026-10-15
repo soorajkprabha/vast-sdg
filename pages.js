@@ -32,6 +32,7 @@ const views = {
     $("#i-summary").textContent = i.summary;
     $("#i-does").innerHTML = i.does.map(d => `<li>${esc(d)}</li>`).join("");
     $("#i-note").textContent = i.note;
+    if (i.id === "solar") $("#i-extra").innerHTML = `<a class="btn-primary link-btn" href="solar.html">View solar statistics →</a>`;
     $("#i-primary").innerHTML = sdgChips(i.primary);
     $("#i-secondary").innerHTML = sdgChips(i.secondary);
     $("#i-basis").textContent = "Basis: " + i.basis;

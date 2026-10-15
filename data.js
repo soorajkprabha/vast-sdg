@@ -15,3 +15,11 @@ async function fromFirestore(name) {
 // Firebase when configured, otherwise the sample JSON files.
 export const loadActivities = () => configured ? fromFirestore("activities") : fetchJson("data/activities.json");
 export const loadReports = () => configured ? fromFirestore("reports") : fetchJson("data/reports.json");
+
+// Solar: plant names/ratings/settings come from data/solar.json; monthly readings from Firebase when configured.
+export async function loadSolar() {
+  const cfg = await fetchJson("data/solar.json");
+  const rows = configured ? await fromFirestore("solar") : cfg.readings;
+  rows.sort((a, b) => a.month.localeCompare(b.month));
+  return { plants: cfg.plants, config: cfg.config, rows, sample: !configured && !!cfg.sample };
+}

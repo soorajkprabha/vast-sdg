@@ -14,7 +14,7 @@ if (!configured) {
 
 async function start() {
   const { db, auth, storage, fs, au, st } = await import("./firebase.js");
-  let activities = [], reports = [], editing = null;
+  let activities = [], reports = [], solarRows = [], solarCfg = null, editing = null;
 
   // ---- auth ----
   au.onAuthStateChanged(auth, user => {
@@ -36,6 +36,7 @@ async function start() {
     document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
     $("#tab-activities").hidden = t.dataset.tab !== "activities";
     $("#tab-reports").hidden = t.dataset.tab !== "reports";
+    $("#tab-solar").hidden = t.dataset.tab !== "solar";
   }));
 
   // ---- data ----
@@ -44,6 +45,7 @@ async function start() {
       const [a, r] = await Promise.all([fs.getDocs(fs.collection(db, "activities")), fs.getDocs(fs.collection(db, "reports"))]);
       activities = a.docs.map(d => ({ id: d.id, ...d.data() })).sort((x, y) => y.date.localeCompare(x.date));
       reports = r.docs.map(d => ({ id: d.id, ...d.data() })).sort((x, y) => (y.year || "").localeCompare(x.year || ""));
+      await refreshSolar();
       render();
     } catch (e) { notice("Could not load data: " + e.message); }
   }
@@ -139,6 +141,81 @@ async function start() {
     try { await removeFile(a.imagePath); await fs.deleteDoc(fs.doc(db, "activities", id)); await refresh(); }
     catch (err) { notice("Delete failed: " + err.message); }
   }
+
+  // ---- solar ----
+  async function solarConfig() {
+    if (!solarCfg) solarCfg = await (await fetch("data/solar.json")).json();
+    return solarCfg;
+  }
+  async function refreshSolar() {
+    const snap = await fs.getDocs(fs.collection(db, "solar"));
+    solarRows = snap.docs.map(d => ({ id: d.id, ...d.data() })).sort((a, b) => b.month.localeCompare(a.month));
+    const cfg = await solarConfig();
+    const f = n => (n == null ? "–" : Math.round(n).toLocaleString("en-IN"));
+    $("#solar-list").innerHTML = solarRows.length ? solarRows.map(r => `
+      <div class="item">
+        <div><strong>${esc(r.month)}</strong><br><small>${cfg.plants.map(p => `${esc(p.name)}: ${f(r[p.id])}`).join(" · ")} · Export: ${f(r.export)} · Grid: ${f(r.grid)} kWh</small></div>
+        <div class="item-actions"><button class="btn-outline" data-edit-solar="${esc(r.month)}">Edit</button><button class="btn-danger" data-del-solar="${esc(r.month)}">Delete</button></div>
+      </div>`).join("") : `<p class="muted">No solar readings in Firebase yet. Use "Import readings from data/solar.json" to load the historical data, then add new months here.</p>`;
+  }
+  const sForm = $("#solar-form");
+  const numOrNull = v => (v === "" || v == null ? null : +v);
+  async function openSolar(row) {
+    const cfg = await solarConfig();
+    $("#solar-plant-fields").innerHTML = cfg.plants.map(p => `<label>${esc(p.name)}<input name="${p.id}" type="number" min="0" step="any"></label>`).join("");
+    sForm.reset();
+    if (row) {
+      sForm.elements.month.value = row.month;
+      for (const k of ["grid", "export", "billWithoutSolar", "netBill", ...cfg.plants.map(p => p.id)]) if (row[k] != null) sForm.elements[k].value = row[k];
+    }
+    status("solar", "");
+    sForm.hidden = false;
+    sForm.scrollIntoView({ behavior: "smooth" });
+  }
+  $("#new-solar").addEventListener("click", () => openSolar(null));
+  document.addEventListener("click", e => {
+    const t = e.target;
+    if (t.dataset.cancel === "solar") sForm.hidden = true;
+    if (t.dataset.editSolar) openSolar(solarRows.find(r => r.month === t.dataset.editSolar));
+    if (t.dataset.delSolar) delSolar(t.dataset.delSolar);
+  });
+  sForm.addEventListener("submit", async e => {
+    e.preventDefault();
+    const cfg = await solarConfig();
+    const f = sForm.elements;
+    const data = { month: f.month.value };
+    for (const k of ["grid", "export", "billWithoutSolar", "netBill", ...cfg.plants.map(p => p.id)]) {
+      const v = numOrNull(f[k].value);
+      if (v != null) { if (v < 0) return status("solar", "Values cannot be negative."); data[k] = v; }
+    }
+    const btn = sForm.querySelector("[type=submit]");
+    btn.disabled = true; status("solar", "Saving…");
+    try {
+      await fs.setDoc(fs.doc(db, "solar", data.month), data);
+      sForm.hidden = true;
+      await refreshSolar();
+    } catch (err) { console.error(err); status("solar", "Save failed: " + err.message); }
+    btn.disabled = false;
+  });
+  async function delSolar(month) {
+    if (!confirm(`Delete the solar readings for ${month}?`)) return;
+    try { await fs.deleteDoc(fs.doc(db, "solar", month)); await refreshSolar(); }
+    catch (err) { notice("Delete failed: " + err.message); }
+  }
+  $("#import-solar").addEventListener("click", async () => {
+    const cfg = await solarConfig();
+    if (!confirm(`Write ${cfg.readings.length} monthly readings from data/solar.json into Firebase? Months that already exist will be replaced.`)) return;
+    status("solar-list", "Importing…");
+    try {
+      for (let i = 0; i < cfg.readings.length; i += 400) {
+        const batch = fs.writeBatch(db);
+        cfg.readings.slice(i, i + 400).forEach(r => batch.set(fs.doc(db, "solar", r.month), r));
+        await batch.commit();
+      }
+      status("solar-list", "Import complete.");
+      await refreshSolar();
+    } catch (err) { console.error(err); status("solar-list", "Import failed: " + err.message); }
+  });
 
   // ---- reports ----
   const rForm = $("#report-form");

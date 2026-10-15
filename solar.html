@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solar Statistics | Vidya Academy of Science and Technology</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="solar">
+<header class="site-header" id="header"></header>
+<main>
+  <section class="page-hero solar-hero">
+    <div class="container">
+      <p class="eyebrow">Sustainability · SDG 7 · SDG 13</p>
+      <h1>Solar power statistics</h1>
+      <p class="lead">Generation from our three solar plants (15, 100 and 120 kWp) compared with electricity drawn from the grid.</p>
+    </div>
+    <div class="rainbow" aria-hidden="true"></div>
+  </section>
+
+  <p id="error" class="container error" hidden>Could not load solar data. Open the site through a web server (see README).</p>
+  <div id="sample-banner" class="container callout" hidden><strong>Sample data.</strong> These readings are placeholders for layout only. Real figures appear once the college's data is added.</div>
+
+  <section class="container section" id="solar-body" hidden>
+    <div class="toolbar">
+      <div><h2>Overview</h2><p id="period-note" class="muted small"></p></div>
+      <label class="period">Period <select id="period"></select></label>
+    </div>
+    <div class="stats five" id="kpis"></div>
+
+    <h2 class="gap-top">Generation by plant</h2>
+    <div class="plant-grid" id="plants"></div>
+
+    <h2 class="gap-top">Monthly solar generation</h2>
+    <div class="chart-card"><div class="legend" id="legend-a"></div><p id="chart-note" class="muted small"></p><div id="chart-a"></div></div>
+
+    <h2 class="gap-top">Solar vs grid electricity</h2>
+    <div class="chart-card"><div class="legend" id="legend-b"></div><div id="chart-b"></div>
+      <div class="share-row" id="share-row" aria-label="Solar share of consumption per month"></div></div>
+
+    <div class="toolbar gap-top"><h2>Monthly data</h2><button id="csv" class="btn-outline">Download CSV</button></div>
+    <div class="table-wrap"><table id="data-table"></table></div>
+
+    <div class="callout" id="method"></div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script type="module" src="solar.js"></script>
+</body>
+</html>

@@ -26,7 +26,7 @@ nav a:hover{color:var(--brand)}
 .menu-btn{display:none;background:none;border:0;font-size:1.5rem;color:inherit;cursor:pointer}
 
 .btn{display:inline-block;padding:12px 24px;border-radius:8px;background:#fff;color:#19486A;font-weight:600;text-decoration:none}
-.hero{background:linear-gradient(90deg,rgba(25,72,106,.93) 0%,rgba(25,72,106,.72) 55%,rgba(25,72,106,.38) 100%),url(images/campus-front.jpg) center 62%/cover #19486A;color:#fff;padding:90px 0 0;position:relative}
+.hero{background:linear-gradient(90deg,rgba(25,72,106,.84) 0%,rgba(25,72,106,.5) 50%,rgba(25,72,106,.08) 100%),url(images/campus-front.jpg) center 62%/cover #19486A;color:#fff;padding:90px 0 0;position:relative}
 .hero .container{padding-bottom:80px}
 .hero h1{font-size:clamp(2rem,5vw,3.4rem);max-width:800px}
 .eyebrow{text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;opacity:.8;margin:0 0 12px}
@@ -393,3 +393,5 @@ table a:hover,th a:hover{color:var(--brand)}
 main p a,main li a,main small a,.callout a,footer a,.bar-gap a{text-decoration:none;color:var(--brand);font-weight:600}
 main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{filter:brightness(.8)}
 .note-grid{margin:0 0 18px}
+
+.hero h1,.hero .lead,.hero .eyebrow{text-shadow:0 2px 12px rgba(0,20,40,.55)}

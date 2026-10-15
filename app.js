@@ -82,12 +82,15 @@ function renderStats(activities) {
 
   const counts = SDGS.map(g => activities.filter(a => a.sdgs.includes(g.n)).length);
   const max = Math.max(1, ...counts);
+  const empty = SDGS.filter((g, i) => !counts[i]);
   $("#bars").innerHTML = SDGS.map((g, i) => `
-    <a class="bar-row" href="sdg.html?g=${g.n}" title="${esc(g.name)}">
-      <span class="bar-label">SDG ${g.n}</span>
-      <span class="bar-track"><span class="bar-fill" style="width:${counts[i] / max * 100}%;background:${g.color}"></span></span>
+    <a class="bar-row${counts[i] ? "" : " zero"}" href="sdg.html?g=${g.n}">
+      <span class="bar-badge" style="--c:${g.color}"><img src="images/sdg/${g.n}.png" alt="" onerror="this.remove()"><b>${g.n}</b></span>
+      <span class="bar-label">${esc(g.name)}</span>
+      <span class="bar-track">${counts[i] ? `<span class="bar-fill" style="width:${counts[i] / max * 100}%;background:${g.color}"></span>` : `<span class="bar-none">No activities yet</span>`}</span>
       <span class="bar-val">${counts[i]}</span>
-    </a>`).join("");
+    </a>`).join("")
+    + (empty.length ? `<p class="bar-gap"><strong>${empty.length} of 17 goals have no recorded activities yet:</strong> ${empty.map(g => `<a href="sdg.html?g=${g.n}">SDG ${g.n} ${esc(g.name)}</a>`).join(", ")}.</p>` : `<p class="bar-gap">Every goal has at least one recorded activity.</p>`);
 }
 
 async function initHome() {

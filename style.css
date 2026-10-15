@@ -254,3 +254,4 @@ td.bad{color:#C5192D;font-weight:700}
 @media (prefers-color-scheme:dark){td.good{color:#7ed957}td.bad{color:#ff7b8a}}
 .table-wrap.short{max-height:none}
 #compare-table th small{font-weight:400;color:var(--muted)}
+#impact .stats{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}

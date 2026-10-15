@@ -6,7 +6,9 @@ import { loadActivities, loadReports } from "./data.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const fmtDate = d => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
+const fmtDate = d => d ? new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }) : "";
+const metaLine = a => [fmtDate(a.date), a.department].filter(Boolean).map(esc).join(" · ");
+const byDate = (a, b) => (b.date || "").localeCompare(a.date || "");
 const fmtNum = n => n.toLocaleString("en-IN");
 
 function chips(list) {
@@ -23,7 +25,7 @@ function activityCard(a, i) {
     <div class="body">
       <div class="chips">${chips(a.sdgs)}</div>
       <h3>${esc(a.title)}</h3>
-      <p class="meta">${fmtDate(a.date)} · ${esc(a.department)}</p>
+      <p class="meta">${metaLine(a)}</p>
       <p>${esc(a.description)}</p>
       <button class="link" data-i="${i}">View details →</button>
     </div>
@@ -39,11 +41,12 @@ function wireModal(activities) {
     $("#modal-body").innerHTML = `
       <div class="chips">${chips(a.sdgs)}</div>
       <h2>${esc(a.title)}</h2>
-      <p class="meta">${fmtDate(a.date)} · ${esc(a.department)}</p>
+      <p class="meta">${metaLine(a)}</p>
       ${a.image ? `<img class="full" src="${esc(a.image)}" alt="${esc(a.title)}">` : ""}
       <p>${esc(a.description)}</p>
       <h3>Outcomes</h3><p>${esc(a.outcomes)}</p>
-      <p class="meta"><strong>${fmtNum(a.beneficiaries || 0)}</strong> beneficiaries · <strong>${fmtNum(a.hours || 0)}</strong> volunteer hours</p>`;
+      ${a.beneficiaries || a.hours ? `<p class="meta">${[a.beneficiaries ? `<strong>${fmtNum(a.beneficiaries)}</strong> beneficiaries` : "", a.hours ? `<strong>${fmtNum(a.hours)}</strong> volunteer hours` : ""].filter(Boolean).join(" · ")}</p>` : ""}
+      ${a.link ? `<p><a href="${esc(a.link)}">Read more →</a></p>` : ""}`;
     dlg.showModal();
   });
   $("#modal-close").addEventListener("click", () => dlg.close());
@@ -70,7 +73,12 @@ function renderStats(activities) {
     hours: activities.reduce((s, a) => s + (a.hours || 0), 0),
     covered
   };
-  document.querySelectorAll("[data-stat]").forEach(el => countUp(el, vals[el.dataset.stat]));
+  document.querySelectorAll("[data-stat]").forEach(el => {
+    const v = vals[el.dataset.stat];
+    // hide figures nobody has recorded yet rather than showing a misleading 0
+    if (!v && (el.dataset.stat === "beneficiaries" || el.dataset.stat === "hours")) el.parentElement.hidden = true;
+    else countUp(el, v);
+  });
 
   const counts = SDGS.map(g => activities.filter(a => a.sdgs.includes(g.n)).length);
   const max = Math.max(1, ...counts);
@@ -85,7 +93,7 @@ function renderStats(activities) {
 async function initHome() {
   navSetup();
   const [activities, reports] = await Promise.all([loadActivities(), loadReports()]);
-  activities.sort((a, b) => b.date.localeCompare(a.date));
+  activities.sort(byDate);
   const count = n => activities.filter(a => a.sdgs.includes(n)).length;
 
   $("#goals-grid").innerHTML = SDGS.map(g => `
@@ -123,9 +131,10 @@ async function initGoal() {
   $("#prev").href = `sdg.html?g=${n === 1 ? 17 : n - 1}`;
   $("#next").href = `sdg.html?g=${n === 17 ? 1 : n + 1}`;
 
-  const all = (await loadActivities()).sort((a, b) => b.date.localeCompare(a.date));
+  const all = (await loadActivities()).sort(byDate);
   const mine = all.filter(a => a.sdgs.includes(n));
-  $("#goal-count").textContent = `${mine.length} activit${mine.length === 1 ? "y" : "ies"} · ${fmtNum(mine.reduce((s, a) => s + (a.beneficiaries || 0), 0))} beneficiaries`;
+  const benef = mine.reduce((s, a) => s + (a.beneficiaries || 0), 0);
+  $("#goal-count").textContent = `${mine.length} activit${mine.length === 1 ? "y" : "ies"}${benef ? ` · ${fmtNum(benef)} beneficiaries` : ""}`;
   $("#activities").innerHTML = mine.length
     ? mine.map(a => activityCard(a, all.indexOf(a))).join("")
     : `<p class="empty">No activities recorded for this goal yet.</p>`;

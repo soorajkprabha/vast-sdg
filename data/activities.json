@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "title": "Solar Power Plant (235 kWp)",
+    "sdgs": [
+      7,
+      13
+    ],
+    "department": "Campus facilities",
+    "description": "A 235 kWp solar installation, made up of 15, 100 and 120 kWp plants, generates clean, renewable energy on campus and reduces the institution's carbon footprint. The 120 kWp plant was commissioned on 22 April 2026.",
+    "outcomes": "Monthly generation, KSEB import and the solar share of electricity are published on the solar statistics page.",
+    "link": "solar.html",
+    "date": "",
+    "image": ""
+  },
+  {
+    "title": "Sewage Treatment Plant (50,000 LPD)",
+    "sdgs": [
+      6,
+      12
+    ],
+    "department": "Campus facilities",
+    "description": "A 50,000 litres-per-day plant treats campus waste water, with an aerobic upflow filter, a tertiary settling tank and a filter feed tank.",
+    "outcomes": "Waste water is treated for clean and safe discharge, and treated water is reused, promoting water conservation.",
+    "link": "initiative.html?i=sewage",
+    "date": "",
+    "image": ""
+  },
+  {
+    "title": "Rainwater Harvesting (11 Lakh litres)",
+    "sdgs": [
+      6,
+      13
+    ],
+    "department": "Campus facilities",
+    "description": "A rainwater harvesting system with a stated capacity of 11 Lakh litres collects rainwater from roofs and recharges groundwater.",
+    "outcomes": "Conserves natural resources by recharging groundwater with roof rainwater.",
+    "link": "initiative.html?i=rainwater",
+    "date": "",
+    "image": ""
+  },
+  {
+    "title": "Bio-Gas Plant (41 m³)",
+    "sdgs": [
+      7,
+      12
+    ],
+    "department": "Campus facilities",
+    "description": "A 41 m³ bio-gas plant converts organic waste into clean cooking gas.",
+    "outcomes": "Reduces waste, provides clean cooking gas and improves soil health through the digested slurry.",
+    "link": "initiative.html?i=biogas",
+    "date": "",
+    "image": ""
+  }
+]

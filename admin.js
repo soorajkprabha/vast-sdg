@@ -43,7 +43,7 @@ async function start() {
   async function refresh() {
     try {
       const [a, r] = await Promise.all([fs.getDocs(fs.collection(db, "activities")), fs.getDocs(fs.collection(db, "reports"))]);
-      activities = a.docs.map(d => ({ id: d.id, ...d.data() })).sort((x, y) => y.date.localeCompare(x.date));
+      activities = a.docs.map(d => ({ id: d.id, ...d.data() })).sort((x, y) => (y.date || "").localeCompare(x.date || ""));
       reports = r.docs.map(d => ({ id: d.id, ...d.data() })).sort((x, y) => (y.year || "").localeCompare(x.year || ""));
       await refreshSolar();
       render();
@@ -53,7 +53,7 @@ async function start() {
   function render() {
     $("#activity-list").innerHTML = activities.length ? activities.map(a => `
       <div class="item">
-        <div><strong>${esc(a.title)}</strong><br><small>${esc(a.date)} · ${esc(a.department)} · SDG ${a.sdgs.join(", ")}</small></div>
+        <div><strong>${esc(a.title)}</strong><br><small>${[a.date, a.department].filter(Boolean).map(esc).join(" · ")} · SDG ${a.sdgs.join(", ")}</small></div>
         <div class="item-actions"><button class="btn-outline" data-edit="${a.id}">Edit</button><button class="btn-danger" data-del-a="${a.id}">Delete</button></div>
       </div>`).join("") : `<p class="muted">No activities yet.</p>`;
     $("#report-list").innerHTML = reports.length ? reports.map(r => `

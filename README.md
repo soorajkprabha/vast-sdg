@@ -54,3 +54,10 @@ Plants, ratings and settings are in `data/solar.json` (`plants`, `config`). Mont
 1. After Firebase is set up, open `admin.html` → **Solar data** → **Import readings from data/solar.json** (loads the 99 months from the college data sheet).
 2. Each month, use **+ Add / edit month** to enter the three plants' generation, KSEB import (zone 1) and export, as in the college electricity data sheet.
 3. Paste the updated `firestore.rules` into the Firebase console (it now includes the `solar` collection).
+
+## Gallery (gallery.html)
+Put photos in `images/gallery/` (JPEG, ideally under 400 KB each) and list them in `data/gallery.json`:
+
+    { "file": "images/gallery/solar-roof.jpg", "caption": "100 kWp rooftop array", "facility": "solar", "year": "2018", "credit": "VAST" }
+
+`facility` is one of `solar`, `sewage`, `rainwater`, `biogas` or `campus`. The first photo for a facility also appears on that facility's page. Only use photos the college owns or has permission to publish.

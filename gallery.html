@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery | Vidya Academy of Science and Technology</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="gallery">
+<header class="site-header" id="header"></header>
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Sustainability</p>
+      <h1>Gallery</h1>
+      <p class="lead">Photographs of our solar plants, water and waste facilities and campus sustainability activities.</p>
+    </div>
+    <div class="rainbow" aria-hidden="true"></div>
+  </section>
+  <p id="error" class="container error" hidden>Could not load the gallery. Open the site through a web server (see README).</p>
+  <section class="container section">
+    <div id="filters" class="filters" role="group" aria-label="Filter photos"></div>
+    <div id="photos" class="photos"></div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<dialog id="lightbox" class="lightbox">
+  <button id="lb-close" class="close" aria-label="Close">×</button>
+  <button id="lb-prev" class="lb-nav" aria-label="Previous photo">‹</button>
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button id="lb-next" class="lb-nav" aria-label="Next photo">›</button>
+</dialog>
+<script type="module" src="gallery.js"></script>
+</body>
+</html>

@@ -9,13 +9,15 @@
    "id": "p1",
    "name": "15 kWp plant",
    "kWp": 15,
-   "color": "#FD9D24"
+   "color": "#FD9D24",
+   "commissionedYear": 2014
   },
   {
    "id": "p2",
    "name": "100 kWp plant",
    "kWp": 100,
-   "color": "#0A97D9"
+   "color": "#0A97D9",
+   "commissionedYear": 2018
   },
   {
    "id": "p3",

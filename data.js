@@ -23,3 +23,5 @@ export async function loadSolar() {
   rows.sort((a, b) => a.month.localeCompare(b.month));
   return { plants: cfg.plants, config: cfg.config, rows, sample: !configured && !!cfg.sample };
 }
+
+export const loadGallery = () => fetchJson("data/gallery.json");

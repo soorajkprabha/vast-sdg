@@ -66,7 +66,7 @@ function render() {
     const tot = sum(w, r => r[p.id]);
     const best = w.length ? w.reduce((a, b) => b[p.id] > a[p.id] ? b : a) : null;
     return `<article class="plant" style="--c:${p.color}">
-      <h3>${esc(p.name)} ${p.commissioned ? `<small>commissioned ${new Date(p.commissioned).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</small>` : ""}</h3>
+      <h3>${esc(p.name)} ${p.commissioned ? `<small>commissioned ${new Date(p.commissioned).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}</small>` : p.commissionedYear ? `<small>commissioned ${p.commissionedYear}</small>` : ""}</h3>
       <strong class="plant-total">${w.length ? fmt(tot) : "–"} <small>kWh</small></strong>
       <div class="bar"><span style="width:${solarTot ? tot / solarTot * 100 : 0}%"></span></div>
       <ul>

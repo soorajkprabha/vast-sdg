@@ -2,6 +2,7 @@ const LINKS = [
   ["index.html", "Home", "home"],
   ["initiatives.html", "Initiatives", "initiatives"],
   ["solar.html", "Solar statistics", "solar"],
+  ["gallery.html", "Gallery", "gallery"],
   ["sdg-mapping.html", "SDG mapping", "mapping"],
   ["carbon.html", "Carbon impact", "carbon"],
   ["index.html#goals", "Goals", "goal"],

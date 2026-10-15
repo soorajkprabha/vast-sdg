@@ -388,3 +388,8 @@ body[data-page=solar] nav a.current,body[data-page=solar] nav a.current:hover{ba
 /* no underlines on links inside tables and card titles */
 table a,th a,td a,.basis-card h3 a{text-decoration:none}
 table a:hover,th a:hover{color:var(--brand)}
+
+/* links in text: no underline, distinguished by colour and weight */
+main p a,main li a,main small a,.callout a,footer a,.bar-gap a{text-decoration:none;color:var(--brand);font-weight:600}
+main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{filter:brightness(.8)}
+.note-grid{margin:0 0 18px}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDG Goal | Vidya Academy of Science and Technology</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="goal">
+
+<header class="site-header" id="header"></header>
+
+<main>
+  <section id="goal-hero" class="goal-hero">
+    <div class="container">
+      <a href="index.html#goals" class="back">← All goals</a>
+      <div class="goal-title"><span id="goal-num" class="big-num"></span><img id="goal-icon" class="goal-icon" alt="" hidden><h1 id="goal-name"></h1></div>
+      <p id="goal-count" class="lead"></p>
+      <div class="pager"><a id="prev" href="#">← Previous goal</a><a id="next" href="#">Next goal →</a></div>
+    </div>
+  </section>
+
+  <p id="error" class="container error" hidden>Could not load activity data. Open this site through a web server (see README), not by double-clicking the file.</p>
+
+  <section class="container section">
+    <div id="goal-initiatives" hidden>
+      <h2>Campus initiatives supporting this goal</h2>
+      <div id="goal-init-grid" class="init-grid"></div>
+    </div>
+    <h2 class="gap-top">Activities</h2>
+    <div id="activities" class="activities"></div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+
+<dialog id="modal">
+  <button id="modal-close" class="close" aria-label="Close">×</button>
+  <div id="modal-body"></div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

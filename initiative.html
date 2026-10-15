@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Initiative | Vidya Academy of Science and Technology</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="initiative">
+<header class="site-header" id="header"></header>
+<main>
+  <section id="init-hero" class="goal-hero">
+    <div class="container">
+      <a href="initiatives.html" class="back">← All initiatives</a>
+      <div class="goal-title"><span id="init-icon" class="big-num"></span><h1 id="init-name"></h1></div>
+      <p id="init-outcome" class="lead"></p>
+    </div>
+  </section>
+  <p id="error" class="container error" hidden>Initiative not found or data could not load.</p>
+  <section class="container section detail" id="init-body" hidden>
+    <div class="facts">
+      <div class="fact"><span>Capacity</span><strong id="f-cap"></strong></div>
+      <div class="fact"><span>Theme</span><strong id="f-theme"></strong></div>
+      <div class="fact"><span>Estimated CO₂ avoided</span><strong id="f-co2"></strong><small>per year</small></div>
+    </div>
+    <div class="two-col">
+      <div>
+        <h2>About</h2><p id="i-summary"></p>
+        <h3>What it does</h3><ul id="i-does" class="ticks"></ul>
+        <p id="i-note" class="muted small"></p>
+      </div>
+      <figure class="photo" id="i-photo"></figure>
+    </div>
+    <h2 class="gap-top">Sustainable Development Goals</h2>
+    <div class="goal-links"><div><h3>Primary</h3><div id="i-primary" class="chips big"></div></div><div><h3>Supporting</h3><div id="i-secondary" class="chips big"></div></div></div>
+    <p id="i-basis" class="muted"></p>
+    <div class="pager"><a id="i-prev" href="#">← Previous</a><a id="i-next" href="#">Next →</a></div>
+  </section>
+</main>
+<footer id="footer"></footer>
+<script type="module" src="pages.js"></script>
+</body>
+</html>

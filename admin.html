@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin | Vidya Academy SDG Activities</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="admin">
+
+<header class="site-header">
+  <div class="container nav">
+    <a href="index.html" class="brand"><img class="logo-img" src="images/logo.png" alt="Vidya Academy logo" onerror="this.outerHTML='<span class=&quot;logo&quot;>V</span>'"><span>Vidya Academy <small>Admin</small></span></a>
+    <a class="more" href="evidence.html">Evidence checklist</a>
+    <div id="user-box" hidden><span id="user-email" class="muted"></span> <button id="signout" class="btn-outline">Sign out</button></div>
+  </div>
+</header>
+
+<main class="container section">
+  <p id="notice" class="error" hidden></p>
+
+  <section id="login" class="panel narrow" hidden>
+    <h2>Admin sign in</h2>
+    <form id="login-form">
+      <label>Email <input id="email" type="email" required autocomplete="username"></label>
+      <label>Password <input id="password" type="password" required autocomplete="current-password"></label>
+      <button class="btn-primary" type="submit">Sign in</button>
+    </form>
+  </section>
+
+  <section id="app" hidden>
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="activities">Activities</button>
+      <button class="tab" data-tab="reports">Reports</button>
+    </div>
+
+    <div id="tab-activities">
+      <div class="toolbar"><h2>Activities</h2><button id="new-activity" class="btn-primary">+ New activity</button></div>
+      <form id="activity-form" class="panel" hidden>
+        <h3 id="activity-form-title">New activity</h3>
+        <label>Title <input name="title" required maxlength="140"></label>
+        <div class="row">
+          <label>Date <input name="date" type="date" required></label>
+          <label>Department / club <input name="department" required maxlength="80"></label>
+        </div>
+        <fieldset><legend>SDGs (choose at least one)</legend><div id="sdg-picks" class="picks"></div></fieldset>
+        <label>Description <textarea name="description" rows="3" required maxlength="1000"></textarea></label>
+        <label>Outcomes <textarea name="outcomes" rows="3" maxlength="1000"></textarea></label>
+        <div class="row">
+          <label>Beneficiaries <input name="beneficiaries" type="number" min="0" value="0"></label>
+          <label>Volunteer hours <input name="hours" type="number" min="0" value="0"></label>
+        </div>
+        <label>Photo <input name="image" type="file" accept="image/*"></label>
+        <div id="current-image" hidden><img alt="Current photo"><label class="check"><input type="checkbox" name="removeImage"> Remove current photo</label></div>
+        <div class="row-actions"><button class="btn-primary" type="submit">Save</button><button type="button" class="btn-outline" data-cancel="activity">Cancel</button></div>
+        <p class="status" data-status="activity" role="status"></p>
+      </form>
+      <div id="activity-list" class="list"></div>
+    </div>
+
+    <div id="tab-reports" hidden>
+      <div class="toolbar"><h2>Reports</h2><button id="new-report" class="btn-primary">+ New report</button></div>
+      <form id="report-form" class="panel" hidden>
+        <h3>New report</h3>
+        <label>Title <input name="title" required maxlength="140"></label>
+        <div class="row">
+          <label>Year <input name="year" required placeholder="2025-26" maxlength="20"></label>
+          <label>PDF file <input name="file" type="file" accept="application/pdf" required></label>
+        </div>
+        <label>Description <textarea name="description" rows="2" maxlength="400"></textarea></label>
+        <div class="row-actions"><button class="btn-primary" type="submit">Upload</button><button type="button" class="btn-outline" data-cancel="report">Cancel</button></div>
+        <p class="status" data-status="report" role="status"></p>
+      </form>
+      <div id="report-list" class="list"></div>
+    </div>
+  </section>
+</main>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>

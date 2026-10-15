@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SDG Activities | Vidya Academy of Science and Technology</title>
+<meta name="description" content="Sustainable Development Goals activities and impact at Vidya Academy of Science and Technology.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="home">
+
+<header class="site-header" id="header"></header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <p class="eyebrow">Vidya Academy of Science and Technology</p>
+      <h1>Working towards the 17 Sustainable Development Goals</h1>
+      <p class="lead">Explore how our students, faculty and community partners are turning the UN's global goals into local action.</p>
+      <a href="#goals" class="btn">Explore the goals</a>
+    </div>
+    <div class="rainbow" aria-hidden="true"></div>
+  </section>
+
+  <p id="error" class="container error" hidden>Could not load activity data. Open this site through a web server (see README), not by double-clicking the file.</p>
+
+  <section id="initiatives" class="container section">
+    <div class="toolbar"><h2>Campus sustainability initiatives</h2><a class="more" href="initiatives.html">All initiatives →</a></div>
+    <p class="muted">Four on-campus facilities for clean energy, clean water and waste: 235 kWp solar meeting 94% of our electricity, a 50,000 LPD sewage treatment plant, 11 Lakh litres of rainwater harvesting and a 41 m³ bio-gas plant.</p>
+    <div id="home-initiatives" class="init-grid"></div>
+  </section>
+
+  <section id="impact" class="container section">
+    <h2>Our impact</h2>
+    <div class="stats">
+      <div><strong data-stat="activities">0</strong><span>Activities</span></div>
+      <div><strong data-stat="beneficiaries">0</strong><span>Beneficiaries</span></div>
+      <div><strong data-stat="hours">0</strong><span>Volunteer hours</span></div>
+      <div><strong data-stat="covered">0</strong><span>of 17 SDGs covered</span></div>
+    </div>
+    <h3 class="sub">Activities per goal</h3>
+    <div id="bars" class="bars"></div>
+  </section>
+
+  <section id="goals" class="alt">
+    <div class="container section">
+      <h2>The 17 goals</h2>
+      <p class="muted">Select a goal to see the activities linked to it.</p>
+      <div id="goals-grid" class="goals"></div>
+    </div>
+  </section>
+
+  <section id="latest-wrap" class="container section">
+    <h2 id="latest-title">Latest activities</h2>
+    <div id="latest" class="activities"></div>
+  </section>
+
+  <section id="reports" class="alt">
+    <div class="container section">
+      <h2>Reports &amp; downloads</h2>
+      <div id="reports-list" class="reports"></div>
+    </div>
+  </section>
+</main>
+
+<footer id="footer"></footer>
+
+<dialog id="modal">
+  <button id="modal-close" class="close" aria-label="Close">×</button>
+  <div id="modal-body"></div>
+</dialog>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

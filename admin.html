@@ -82,14 +82,10 @@
         <h3>Monthly readings (kWh)</h3>
         <div class="row">
           <label>Month <input name="month" type="month" required></label>
-          <label>Grid import, all zones <input name="grid" type="number" min="0" step="any"></label>
+          <label>KSEB import (zone 1) <input name="grid" type="number" min="0" step="any"></label>
         </div>
         <div class="row" id="solar-plant-fields"></div>
-        <div class="row">
-          <label>Exported to grid <input name="export" type="number" min="0" step="any"></label>
-          <label>Bill without solar (₹, optional) <input name="billWithoutSolar" type="number" min="0" step="any"></label>
-        </div>
-        <label>Net KSEB bill (₹, optional) <input name="netBill" type="number" min="0" step="any"></label>
+        <label>Exported to grid <input name="export" type="number" min="0" step="any"></label>
         <p class="muted small">Leave a box empty if there is no reading (for example a plant not yet commissioned). Saving an existing month replaces it.</p>
         <div class="row-actions"><button class="btn-primary" type="submit">Save</button><button type="button" class="btn-outline" data-cancel="solar">Cancel</button></div>
         <p class="status" data-status="solar" role="status"></p>

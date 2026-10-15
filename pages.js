@@ -1,17 +1,27 @@
 import { mountLayout } from "./layout.js";
 import { SDGS, sdgOf } from "./sdgs.js";
+import { loadSolar } from "./data.js";
 import { loadInitiatives, initiativeCard, sdgChips, esc } from "./initiatives.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const page = document.body.dataset.page;
 mountLayout(page);
 
-const KEY_FIGURES = [["235 kWp", "Solar power"], ["94%", "of electricity consumption met"], ["50,000 LPD", "Sewage treatment"], ["11 Lakh L", "Rainwater harvesting"], ["41 m³", "Bio-gas plant"]];
+const KEY_FIGURES = [["235 kWp", "Solar power"], ["…", "solar share of electricity"], ["50,000 LPD", "Sewage treatment"], ["11 Lakh L", "Rainwater harvesting"], ["41 m³", "Bio-gas plant"]];
 
 const views = {
-  initiatives(list) {
+  async initiatives(list) {
     $("#key-figures").innerHTML = KEY_FIGURES.map(([v, l]) => `<div><strong>${v}</strong><span>${l}</span></div>`).join("");
     $("#init-grid").innerHTML = list.map(initiativeCard).join("");
+    try {
+      // solar share = solar ÷ (solar + KSEB import), for the current financial year to date
+      const { rows } = await loadSolar();
+      const fy = m => { const [y, mo] = m.split("-").map(Number); return mo >= 4 ? y : y - 1; };
+      const cur = rows.filter(r => fy(r.month) === fy(rows[rows.length - 1].month));
+      const solar = cur.reduce((s, r) => s + (r.p1 || 0) + (r.p2 || 0) + (r.p3 || 0), 0), grid = cur.reduce((s, r) => s + (r.grid || 0), 0);
+      const tile = $("#key-figures").children[1];
+      tile.innerHTML = `<strong>${Math.round(solar / (solar + grid) * 100)}%</strong><span>solar share of electricity, FY ${fy(cur[0].month)}-${String(fy(cur[0].month) + 1).slice(2)} so far</span>`;
+    } catch (e) { console.error(e); $("#key-figures").children[1].remove(); }
     $("#glance tbody").innerHTML = list.map(i => `<tr><th scope="row"><a href="initiative.html?i=${i.id}">${esc(i.name)}</a></th><td>${esc(i.capacity)}</td><td>${esc(i.outcome)}</td><td>${esc(i.theme)}</td></tr>`).join("");
   },
 
@@ -77,7 +87,7 @@ const views = {
     const confirm = [
       "Add the date of commissioning for each facility",
       "Rainwater harvesting: confirm how the 11 Lakh litre total is made up from tanks and pits (the display board shows one 1,60,000 litre tank)",
-      "Solar: record annual generation in kWh and the working behind the 94% figure",
+      "Solar: keep the working behind the published solar share (solar ÷ (solar + KSEB import)) and annual generation in kWh",
       "SDG mapping: confirm the primary goals chosen and link them to the relevant POs and PSOs"
     ];
     const files = [
@@ -109,6 +119,6 @@ const views = {
 };
 
 (async () => {
-  try { views[page](page === "evidence" ? null : await loadInitiatives()); }
+  try { await views[page](page === "evidence" ? null : await loadInitiatives()); }
   catch (e) { console.error(e); const el = $("#error"); if (el) el.hidden = false; }
 })();

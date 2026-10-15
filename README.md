@@ -52,5 +52,5 @@ Photos are resized to 1600px in the browser before upload. Once Firebase is on, 
 ## Solar statistics page (solar.html)
 Plants, ratings and settings are in `data/solar.json` (`plants`, `config`). Monthly readings (`readings`) come from that file until Firebase is configured; then they come from the Firestore `solar` collection.
 1. After Firebase is set up, open `admin.html` → **Solar data** → **Import readings from data/solar.json** (loads the 99 months from the college data sheet).
-2. Each month, use **+ Add / edit month** to enter the three plants' generation, grid import (all zones), export, and optionally the bill figures.
+2. Each month, use **+ Add / edit month** to enter the three plants' generation, KSEB import (zone 1) and export, as in the college electricity data sheet.
 3. Paste the updated `firestore.rules` into the Firebase console (it now includes the `solar` collection).

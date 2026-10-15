@@ -5,15 +5,33 @@
     "icon": "☀️",
     "color": "#FCC30B",
     "capacity": "235 kWp",
-    "outcome": "Meets 94% of the campus's total electricity consumption",
+    "outcome": "Clean electricity for the campus; see live solar statistics",
     "theme": "Clean energy",
-    "summary": "The 235 kWp solar plant supplies 94% of the campus's total electricity consumption, making it the largest contributor to the institution's clean-energy profile.",
-    "does": ["Generates clean, renewable energy on campus", "Reduces the carbon footprint of the institution", "Supports a sustainable future"],
+    "summary": "The 235 kWp solar installation has three plants (15, 100 and 120 kWp) and is the largest contributor to the institution's clean-energy profile. The 120 kWp plant was commissioned on 22 April 2026. Monthly generation, KSEB import and the solar share are on the solar statistics page.",
+    "does": [
+      "Generates clean, renewable energy on campus",
+      "Reduces the carbon footprint of the institution",
+      "Supports a sustainable future"
+    ],
     "note": "kWp is the peak (DC) rating of the installed panels.",
-    "primary": [7, 13],
-    "secondary": [9, 11, 12, 3, 4],
+    "primary": [
+      7,
+      13
+    ],
+    "secondary": [
+      9,
+      11,
+      12,
+      3,
+      4
+    ],
     "basis": "Renewable share of energy (target 7.2) and lower carbon emissions (13.2). Secondary: clean infrastructure (9.4), less air pollution (3.9, 11.6), and the plant as a learning resource (4.7).",
-    "co2": { "lo": 150, "hi": 200, "basis": "KSEB data supplied by the institution", "label": "150 to 200 t" }
+    "co2": {
+      "lo": 150,
+      "hi": 200,
+      "basis": "KSEB data supplied by the institution",
+      "label": "150 to 200 t"
+    }
   },
   {
     "id": "sewage",
@@ -24,12 +42,30 @@
     "outcome": "Treated water for safe discharge and reuse",
     "theme": "Clean water",
     "summary": "The sewage treatment plant has a capacity of 50,000 litres per day and treats campus waste water for safe discharge and reuse. It includes an aerobic upflow filter, a tertiary settling tank and a filter feed tank.",
-    "does": ["Treats waste water effectively", "Ensures clean and safe discharge", "Promotes water reuse and conservation"],
+    "does": [
+      "Treats waste water effectively",
+      "Ensures clean and safe discharge",
+      "Promotes water reuse and conservation"
+    ],
     "note": "LPD = litres per day.",
-    "primary": [6, 12],
-    "secondary": [3, 11, 13, 14, 15],
+    "primary": [
+      6,
+      12
+    ],
+    "secondary": [
+      3,
+      11,
+      13,
+      14,
+      15
+    ],
     "basis": "Treatment and safe reuse of waste water (6.3). Secondary: less pollution reaching water bodies and soil (14.1, 12.4) and fewer water-borne health risks (3.9).",
-    "co2": { "lo": 2.6, "hi": 5.2, "basis": "50 to 80% of 50 m³ per day reused, replacing fresh water at about 0.5 kWh per m³", "label": "2.6 to 5.2 t (gross)" }
+    "co2": {
+      "lo": 2.6,
+      "hi": 5.2,
+      "basis": "50 to 80% of 50 m³ per day reused, replacing fresh water at about 0.5 kWh per m³",
+      "label": "2.6 to 5.2 t (gross)"
+    }
   },
   {
     "id": "rainwater",
@@ -40,12 +76,28 @@
     "outcome": "Roof rainwater collected; groundwater recharged",
     "theme": "Clean water",
     "summary": "The rainwater harvesting system has a stated capacity of 11 Lakh litres (1.1 million litres), collecting roof rainwater and recharging groundwater.",
-    "does": ["Collects rainwater from roofs", "Recharges groundwater", "Conserves natural resources"],
+    "does": [
+      "Collects rainwater from roofs",
+      "Recharges groundwater",
+      "Conserves natural resources"
+    ],
     "note": "",
-    "primary": [6, 13],
-    "secondary": [11, 12, 15],
+    "primary": [
+      6,
+      13
+    ],
+    "secondary": [
+      11,
+      12,
+      15
+    ],
     "basis": "Water-use efficiency and groundwater recharge (6.4, 6.6). Secondary: climate adaptation and resilience to dry spells (13.1) and protection of groundwater-dependent ecosystems (15.1).",
-    "co2": { "lo": 0.4, "hi": 1.2, "basis": "1 to 3 tank fills per year (1,100 to 3,300 m³) at about 0.5 kWh per m³", "label": "0.4 to 1.2 t" }
+    "co2": {
+      "lo": 0.4,
+      "hi": 1.2,
+      "basis": "1 to 3 tank fills per year (1,100 to 3,300 m³) at about 0.5 kWh per m³",
+      "label": "0.4 to 1.2 t"
+    }
   },
   {
     "id": "biogas",
@@ -56,11 +108,28 @@
     "outcome": "Organic waste converted to cooking gas",
     "theme": "A healthier planet",
     "summary": "The 41 m³ bio-gas plant converts organic waste into clean cooking gas, cutting waste and improving soil health.",
-    "does": ["Converts organic waste to clean energy", "Generates clean cooking gas", "Reduces waste and improves soil health"],
+    "does": [
+      "Converts organic waste to clean energy",
+      "Generates clean cooking gas",
+      "Reduces waste and improves soil health"
+    ],
     "note": "",
-    "primary": [7, 12],
-    "secondary": [13, 11, 15, 3],
+    "primary": [
+      7,
+      12
+    ],
+    "secondary": [
+      13,
+      11,
+      15,
+      3
+    ],
     "basis": "Clean cooking fuel (7.1) and waste reduction and recycling (12.5). Secondary: lower methane emissions from organic waste (13.2), soil health from the slurry (15.3) and campus waste management (11.6).",
-    "co2": { "lo": 9, "hi": 19, "basis": "20 to 41 m³ of gas per day replacing LPG (0.43 kg LPG per m³; 2.9 kg CO₂ per kg LPG)", "label": "9 to 19 t" }
+    "co2": {
+      "lo": 9,
+      "hi": 19,
+      "basis": "20 to 41 m³ of gas per day replacing LPG (0.43 kg LPG per m³; 2.9 kg CO₂ per kg LPG)",
+      "label": "9 to 19 t"
+    }
   }
 ]

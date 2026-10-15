@@ -154,7 +154,7 @@ async function start() {
     const f = n => (n == null ? "–" : Math.round(n).toLocaleString("en-IN"));
     $("#solar-list").innerHTML = solarRows.length ? solarRows.map(r => `
       <div class="item">
-        <div><strong>${esc(r.month)}</strong><br><small>${cfg.plants.map(p => `${esc(p.name)}: ${f(r[p.id])}`).join(" · ")} · Export: ${f(r.export)} · Grid: ${f(r.grid)} kWh</small></div>
+        <div><strong>${esc(r.month)}</strong><br><small>${cfg.plants.map(p => `${esc(p.name)}: ${f(r[p.id])}`).join(" · ")} · Export: ${f(r.export)} · KSEB import: ${f(r.grid)} kWh</small></div>
         <div class="item-actions"><button class="btn-outline" data-edit-solar="${esc(r.month)}">Edit</button><button class="btn-danger" data-del-solar="${esc(r.month)}">Delete</button></div>
       </div>`).join("") : `<p class="muted">No solar readings in Firebase yet. Use "Import readings from data/solar.json" to load the historical data, then add new months here.</p>`;
   }
@@ -166,7 +166,7 @@ async function start() {
     sForm.reset();
     if (row) {
       sForm.elements.month.value = row.month;
-      for (const k of ["grid", "export", "billWithoutSolar", "netBill", ...cfg.plants.map(p => p.id)]) if (row[k] != null) sForm.elements[k].value = row[k];
+      for (const k of ["grid", "export", ...cfg.plants.map(p => p.id)]) if (row[k] != null) sForm.elements[k].value = row[k];
     }
     status("solar", "");
     sForm.hidden = false;
@@ -184,7 +184,7 @@ async function start() {
     const cfg = await solarConfig();
     const f = sForm.elements;
     const data = { month: f.month.value };
-    for (const k of ["grid", "export", "billWithoutSolar", "netBill", ...cfg.plants.map(p => p.id)]) {
+    for (const k of ["grid", "export", ...cfg.plants.map(p => p.id)]) {
       const v = numOrNull(f[k].value);
       if (v != null) { if (v < 0) return status("solar", "Values cannot be negative."); data[k] = v; }
     }

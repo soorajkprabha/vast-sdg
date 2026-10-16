@@ -1,6 +1,6 @@
 import { mountLayout } from "./layout.js";
 import { SDGS, sdgOf } from "./sdgs.js";
-import { loadSolar, loadGallery } from "./data.js";
+import { loadSolar, loadGallery, fetchJson } from "./data.js";
 import { loadInitiatives, initiativeCard, sdgChips, esc } from "./initiatives.js";
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -90,7 +90,7 @@ const views = {
   },
 
   async about() {
-    const d = await (await fetch("data/institute.json")).json();
+    const d = await fetchJson("data/institute.json");
     $("#stats").innerHTML = d.stats.map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
     $("#overview").innerHTML = `<tbody>${d.overview.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody>`;
     const ul = (id, list) => { $(id).innerHTML = list.map(x => `<li>${esc(x)}</li>`).join(""); };

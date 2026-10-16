@@ -1,7 +1,9 @@
 import { configured } from "./firebase-config.js";
 
-async function fetchJson(path) {
-  const res = await fetch(path);
+// A new query string every minute stops browsers and the Pages CDN from serving stale data files after an update.
+const bust = () => Math.floor(Date.now() / 60000);
+export async function fetchJson(path) {
+  const res = await fetch(`${path}?t=${bust()}`, { cache: "no-cache" });
   if (!res.ok) throw new Error(path + " failed to load");
   return res.json();
 }

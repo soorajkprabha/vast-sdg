@@ -144,7 +144,7 @@ async function start() {
 
   // ---- solar ----
   async function solarConfig() {
-    if (!solarCfg) solarCfg = await (await fetch("data/solar.json")).json();
+    if (!solarCfg) solarCfg = await (await fetch("data/solar.json?t=" + Date.now())).json();
     return solarCfg;
   }
   async function refreshSolar() {

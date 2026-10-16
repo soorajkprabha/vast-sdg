@@ -1,12 +1,9 @@
 import { sdgOf } from "./sdgs.js";
+import { fetchJson } from "./data.js";
 
 export const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-export async function loadInitiatives() {
-  const res = await fetch("data/initiatives.json");
-  if (!res.ok) throw new Error("initiatives failed to load");
-  return res.json();
-}
+export const loadInitiatives = () => fetchJson("data/initiatives.json");
 
 export const sdgChips = (list, cls = "") =>
   list.map(n => `<a class="chip ${cls}" style="--c:${sdgOf(n).color}" href="sdg.html?g=${n}" title="${esc(sdgOf(n).name)}">SDG ${n}</a>`).join("");

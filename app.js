@@ -90,7 +90,7 @@ function renderStats(activities) {
       <span class="bar-track">${counts[i] ? `<span class="bar-fill" style="width:${counts[i] / max * 100}%;background:${g.color}"></span>` : `<span class="bar-none">No activities yet</span>`}</span>
       <span class="bar-val">${counts[i]}</span>
     </a>`).join("")
-    + (empty.length ? `<p class="bar-gap"><strong>${empty.length} of 17 goals have no recorded activities yet:</strong> ${empty.map(g => `<a href="sdg.html?g=${g.n}">SDG ${g.n} ${esc(g.name)}</a>`).join(", ")}.</p>` : `<p class="bar-gap">Every goal has at least one recorded activity.</p>`);
+    + (empty.length ? `<p class="bar-gap"><strong>${empty.length} of 17 ${empty.length === 1 ? "goal has" : "goals have"} no recorded activities yet:</strong> ${empty.map(g => `<a href="sdg.html?g=${g.n}">SDG ${g.n} ${esc(g.name)}</a>`).join(", ")}.</p>` : `<p class="bar-gap">Every goal has at least one recorded activity.</p>`);
 }
 
 async function initHome() {

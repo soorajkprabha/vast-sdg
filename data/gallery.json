@@ -4,5 +4,152 @@
     "caption": "VAST campus, front view",
     "facility": "campus",
     "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/solar-auditorium-roof.jpg",
+    "caption": "Solar power plant on the auditorium rooftop",
+    "facility": "solar",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/solar-auditorium-array.jpg",
+    "caption": "Solar panel array on the auditorium rooftop",
+    "facility": "solar",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/solar-south-block-1.jpg",
+    "caption": "Solar power plant on the South Block rooftop",
+    "facility": "solar",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/solar-south-block-2.jpg",
+    "caption": "South Block rooftop solar plant, panel structure",
+    "facility": "solar",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/solar-water-heater-canteen.jpg",
+    "caption": "Rooftop solar water heater at the canteen",
+    "facility": "solar",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/biogas-canteen-1.jpg",
+    "caption": "Biogas plant at the canteen",
+    "facility": "biogas",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/biogas-canteen-2.jpg",
+    "caption": "Biogas plant at the canteen, second view",
+    "facility": "biogas",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/biogas-ladies-hostel.jpg",
+    "caption": "Biogas plant at the Ladies Hostel",
+    "facility": "biogas",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/rainwater-tank-ladies-hostel.jpg",
+    "caption": "Rainwater conservation tank at the Ladies Hostel",
+    "facility": "rainwater",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/rainwater-tank-decennial.jpg",
+    "caption": "Rainwater conservation tank at the Decennial Block",
+    "facility": "rainwater",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/rainwater-harvesting-tank.jpg",
+    "caption": "Rainwater harvesting tank",
+    "facility": "rainwater",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/well-recharging.jpg",
+    "caption": "Well recharging at VAST",
+    "facility": "rainwater",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/water-conservation-awareness.jpg",
+    "caption": "Water conservation awareness sign above the taps",
+    "facility": "rainwater",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/sewage-plant-1.jpg",
+    "caption": "Sewage treatment plant",
+    "facility": "sewage",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/sewage-plant-2.jpg",
+    "caption": "Sewage treatment plant, wider view",
+    "facility": "sewage",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-south-block-toilet.jpg",
+    "caption": "South Block disabled-friendly toilet",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-wheelchair-ramp.jpg",
+    "caption": "Wheelchair ramp",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-lh-mess-hall.jpg",
+    "caption": "LH mess hall wheelchair ramp and disabled-friendly toilet",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-auditorium-ramp.jpg",
+    "caption": "VAST auditorium wheelchair ramp",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-braille-software.jpg",
+    "caption": "Braille software for visually impaired users",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/access-lift.jpg",
+    "caption": "Lift",
+    "facility": "accessibility",
+    "year": "2024",
+    "credit": "VAST"
   }
 ]

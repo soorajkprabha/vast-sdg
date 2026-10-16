@@ -48,13 +48,12 @@ const views = {
     $("#i-basis").textContent = "Basis: " + i.basis;
     const photo = $("#i-photo");
     const fallback = () => { photo.innerHTML = `<img src="images/initiatives/${i.id}.jpg" alt="${esc(i.name)} on campus" onerror="this.parentElement.classList.add('empty');this.remove()"><figcaption>${esc(i.name)}</figcaption>`; };
-    fallback();
     loadGallery().then(g => {
       const mine = g.filter(x => x.facility === i.id);
-      if (!mine.length) return;
+      if (!mine.length) return fallback();
       photo.classList.remove("empty");
       photo.innerHTML = `<img src="${esc(mine[0].file)}" alt="${esc(mine[0].caption || i.name)}"><figcaption>${esc(mine[0].caption || i.name)} · <a href="gallery.html?f=${i.id}">See all ${mine.length} photo${mine.length === 1 ? "" : "s"} →</a></figcaption>`;
-    }).catch(console.error);
+    }).catch(e => { console.error(e); fallback(); });
     const prev = list[(idx + list.length - 1) % list.length], next = list[(idx + 1) % list.length];
     $("#i-prev").href = `initiative.html?i=${prev.id}`; $("#i-prev").textContent = `← ${prev.name}`;
     $("#i-next").href = `initiative.html?i=${next.id}`; $("#i-next").textContent = `${next.name} →`;

@@ -4,7 +4,7 @@ import { loadInitiatives, esc } from "./initiatives.js";
 
 mountLayout("gallery");
 const $ = (s, r = document) => r.querySelector(s);
-const LABELS = { campus: "Campus", accessibility: "Accessibility and inclusion" };
+const LABELS = { campus: "Campus" };
 let photos = [], shown = [], idx = 0, names = { ...LABELS };
 
 (async () => {

@@ -109,47 +109,5 @@
     "facility": "sewage",
     "year": "2024",
     "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-south-block-toilet.jpg",
-    "caption": "South Block disabled-friendly toilet",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-wheelchair-ramp.jpg",
-    "caption": "Wheelchair ramp",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-lh-mess-hall.jpg",
-    "caption": "Ladies Hostel mess hall wheelchair ramp and disabled-friendly toilet",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-auditorium-ramp.jpg",
-    "caption": "VAST auditorium wheelchair ramp",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-braille-software.jpg",
-    "caption": "Braille software for visually impaired users",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
-  },
-  {
-    "file": "images/gallery/access-lift.jpg",
-    "caption": "Lift",
-    "facility": "accessibility",
-    "year": "2024",
-    "credit": "VAST"
   }
 ]

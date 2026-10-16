@@ -89,6 +89,8 @@ const views = {
       + `<tr class="total"><th scope="row">Total</th><td>Middle case about 190 t per year</td><td>about ${Math.round(lo)} to ${Math.round(hi)} t</td></tr>`;
   },
 
+  contact() {},
+
   async about() {
     const d = await fetchJson("data/institute.json");
     $("#stats").innerHTML = d.stats.map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
@@ -135,6 +137,6 @@ const views = {
 };
 
 (async () => {
-  try { await views[page](page === "evidence" || page === "about" ? null : await loadInitiatives()); }
+  try { await views[page](["evidence", "about", "contact"].includes(page) ? null : await loadInitiatives()); }
   catch (e) { console.error(e); const el = $("#error"); if (el) el.hidden = false; }
 })();

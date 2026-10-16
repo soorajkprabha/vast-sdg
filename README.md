@@ -68,3 +68,11 @@ Put photos in `images/gallery/` (JPEG, ideally under 400 KB each) and list them 
 ## Campus photos
 - `images/campus-front.jpg` is the home-page banner and a gallery photo.
 - Save the aerial campus photo as `images/campus-aerial.jpg` and it appears behind the solar page header automatically (the green gradient shows until then). Add it to `data/gallery.json` too if you want it in the gallery.
+
+## Automatic news import (review required)
+`scripts/fetch_news.py` reads the feeds listed in `data/news-sources.json` (WordPress RSS, e.g. `https://news.vidyaacademy.ac.in/tag/nss/feed/`) and adds new posts to `data/activities.json` with `"verified": false` and keyword-suggested SDGs. **The site hides every entry with `"verified": false`.**
+
+The GitHub Action `.github/workflows/fetch-news.yml` runs it every Monday (or on demand: Actions → *Propose new news posts* → Run workflow) and opens a pull request. To publish a proposal: edit the entry, correct the SDG numbers, change `"verified"` to `true` (delete entries that are not SDG activities), then merge. Posts already seen are remembered in `data/news-seen.json` so a deleted entry is not proposed again.
+
+One-time setting: repository **Settings → Actions → General → Workflow permissions → "Allow GitHub Actions to create and approve pull requests"**.
+To add more sources (other tags or the whole site feed), add entries to `data/news-sources.json`.

@@ -1,0 +1,6 @@
+{
+  "feeds": [
+    { "url": "https://news.vidyaacademy.ac.in/tag/nss/feed/", "department": "NSS", "pages": 3 }
+  ],
+  "max_new_per_run": 40
+}

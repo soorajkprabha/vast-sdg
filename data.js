@@ -15,7 +15,8 @@ async function fromFirestore(name) {
 }
 
 // Firebase when configured, otherwise the sample JSON files.
-export const loadActivities = () => configured ? fromFirestore("activities") : fetchJson("data/activities.json");
+// Entries with "verified": false are proposals from the news importer and stay hidden until a person approves them.
+export const loadActivities = async () => (await (configured ? fromFirestore("activities") : fetchJson("data/activities.json"))).filter(a => a.verified !== false);
 export const loadReports = () => configured ? fromFirestore("reports") : fetchJson("data/reports.json");
 
 // Solar: plant names/ratings/settings come from data/solar.json; monthly readings from Firebase when configured.

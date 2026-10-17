@@ -860,15 +860,18 @@
     "image": ""
   },
   {
-    "title": "NSS concducts Onam Kit distribution program for deserving families",
+    "title": "NSS conducts Onam kit distribution programme for deserving families",
     "date": "2026-10-01",
-    "sdgs": [],
+    "sdgs": [
+      1,
+      2
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-10-01).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/10/01/nss-concducts-onam-kit-distribution-program-for-deserving-families/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Vidya welcomes the new wave of NSS trailblazers – 2026 – 27",
@@ -892,23 +895,27 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/09/17/nss-conducts-door-to-door-anti-drug-hiv-awareness-campaign-under-nasha-mukt-yuva/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Digital Awareness on the Move: NSS VAST RailOne Campaign at Wadakkanchery Railway Station",
     "date": "2026-09-10",
-    "sdgs": [],
+    "sdgs": [
+      4,
+      9
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-09-10).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/09/10/digital-awareness-on-the-move-nss-vast-railone-campaign-at-wadakkanchery-railway-station/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "NSS units of VAST reach out to the community through “Sasneham Oru Oonu”",
     "date": "2026-09-03",
     "sdgs": [
+      1,
       2
     ],
     "department": "NSS",
@@ -916,40 +923,48 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/09/03/nss-units-of-vast-reach-out-to-the-community-through-sasneham-oru-oonu/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "NSS promotes digital railway services through railway passenger awareness campaign",
     "date": "2026-08-27",
-    "sdgs": [],
+    "sdgs": [
+      4,
+      9
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-08-27).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/08/27/nss-promotes-digital-railway-services-through-railway-passenger-awareness-campaign/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Project ‘Phoenix’ : An NSS Initiative to restore and rebuild infrastructure",
     "date": "2026-08-06",
-    "sdgs": [],
+    "sdgs": [
+      9,
+      11
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-08-06).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/08/06/project-phoenix-an-nss-initiative-to-restore-and-rebuild-infrastructure/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "NSS volunteer honoured with Certificate of Excellence for Rudhirasena coordination",
     "date": "2026-07-30",
-    "sdgs": [],
+    "sdgs": [
+      3
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-07-30).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/07/30/nss-volunteer-honoured-with-certificate-of-excellence-for-rudhirasena-coordination/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Vidya students honored for individual exemplary blood donations at KTU Rudhirasena Awards 2025-26",
@@ -962,7 +977,7 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/07/16/vidya-students-honored-for-individual-exemplary-blood-donations-at-ktu-rudhirasena-awards-2025-26/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Vidya NSS Units honored by Govt. Medical College, Thrissur on World Blood Donor Day 2026",
@@ -975,26 +990,27 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/06/25/vidya-nss-units-honored-by-govt-medical-college-thrissur-on-world-blood-donor-day-2026/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Plastic waste collection drive at Chavakkad Beach by NSS",
     "date": "2026-05-28",
     "sdgs": [
-      11,
-      12
+      12,
+      14
     ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-05-28).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/05/28/plastic-waste-collection-drive-at-chavakkad-beach-by-nss/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "‘Maanas Gramam’: NSS community survey on Family and Women Welfare",
     "date": "2026-05-21",
     "sdgs": [
+      3,
       5
     ],
     "department": "NSS",
@@ -1002,18 +1018,20 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/05/21/maanas-gramam-nss-community-survey-on-family-and-women-welfare/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Household Travel Survey by Vidya NSS Units",
     "date": "2026-05-14",
-    "sdgs": [],
+    "sdgs": [
+      11
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-05-14).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/05/14/household-travel-survey-by-vidya-nss-units/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "NSS organises Anemia Awareness Session",
@@ -1027,18 +1045,21 @@
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/05/07/nss-organises-anemia-awareness-session/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Railway passenger awareness campaign on RailOne App by Vidya NSS Units",
     "date": "2026-04-30",
-    "sdgs": [],
+    "sdgs": [
+      4,
+      9
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-04-30).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/04/30/railway-passenger-awareness-campaign-on-railone-app-by-vidya-nss-units/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "NSS Volunteer wins second prize in Mimicry at State NSS Kalolsavam",
@@ -1054,13 +1075,16 @@
   {
     "title": "Vidya NSS Organizes ‘Sasneham Oru Oonu’",
     "date": "2026-03-12",
-    "sdgs": [],
+    "sdgs": [
+      1,
+      2
+    ],
     "department": "NSS",
     "description": "Reported on the college News & Events portal (published 2026-03-12).",
     "outcomes": "",
     "link": "https://news.vidyaacademy.ac.in/2026/03/12/vidya-nss-organizes-sasneham-oru-oonu/",
     "image": "",
-    "verified": false
+    "verified": true
   },
   {
     "title": "Heartiest congratulations to Vidya NSS Program Officer Mr. Ranjith E R on being appointed as Regional Co-ordinator of KTU NSS Energy Cell",

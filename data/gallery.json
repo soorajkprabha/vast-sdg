@@ -6,6 +6,13 @@
     "credit": "VAST"
   },
   {
+    "file": "images/campus-aerial.jpg",
+    "caption": "Aerial view of the VAST campus with rooftop solar panels",
+    "facility": "solar",
+    "year": "2026",
+    "credit": "VAST"
+  },
+  {
     "file": "images/gallery/solar-auditorium-roof.jpg",
     "caption": "Solar power plant on the auditorium rooftop",
     "facility": "solar",

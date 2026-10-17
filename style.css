@@ -414,3 +414,7 @@ main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{
   nav#menu.open{display:flex}
   nav#menu a{width:100%;padding:12px 16px;border-radius:12px;font-size:.95rem}
 }
+
+.locations{margin:0}
+.locations img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 12px 34px rgba(19,62,43,.15);border:1px solid var(--line)}
+.locations figcaption{margin-top:8px;color:var(--muted);font-size:.85rem}

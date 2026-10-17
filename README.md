@@ -76,3 +76,11 @@ The GitHub Action `.github/workflows/fetch-news.yml` runs it every Monday (or on
 
 One-time setting: repository **Settings → Actions → General → Workflow permissions → "Allow GitHub Actions to create and approve pull requests"**.
 To add more sources (other tags or the whole site feed), add entries to `data/news-sources.json`.
+
+## Mirror to a second GitHub account
+`.github/workflows/mirror.yml` copies every update on `main` to another repository (one-way; always edit in this repository, because the mirror is overwritten).
+1. In the other account, create an **empty** repository (no README) and turn on Pages (Settings → Pages → `main` / root).
+2. In the other account, create a fine-grained access token (Settings → Developer settings → Personal access tokens → Fine-grained): only that repository, permissions **Contents: Read and write** and **Workflows: Read and write**. Set a calendar reminder before it expires.
+3. In this repository: Settings → Secrets and variables → Actions. Add the secret `MIRROR_TOKEN` (the token) and the variable `MIRROR_REPO` (for example `researchcentre/vast-sdg`).
+4. Run Actions → *Mirror to the second repository* → Run workflow once. After that every push is mirrored automatically.
+The weekly news job only runs in this repository.

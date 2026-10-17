@@ -11,6 +11,8 @@ permissions:
 
 jobs:
   fetch:
+    # Only the primary repository runs this; the mirror just receives its results.
+    if: github.repository == 'soorajkprabha/vast-sdg'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

@@ -1,0 +1,32 @@
+name: Mirror to the second repository
+
+# Copies every update on main to the repository named in the MIRROR_REPO variable.
+# One-way: edit only in this repository; the mirror is overwritten on each run.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    if: github.repository == 'soorajkprabha/vast-sdg'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Push main to the mirror
+        env:
+          MIRROR_REPO: ${{ vars.MIRROR_REPO }}
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: |
+          if [ -z "$MIRROR_REPO" ] || [ -z "$MIRROR_TOKEN" ]; then
+            echo "Mirror is not configured yet: set the variable MIRROR_REPO and the secret MIRROR_TOKEN."
+            exit 0
+          fi
+          git push --force "https://x-access-token:${MIRROR_TOKEN}@github.com/${MIRROR_REPO}.git" HEAD:refs/heads/main
+          echo "Mirrored $(git rev-parse --short HEAD) to ${MIRROR_REPO}"

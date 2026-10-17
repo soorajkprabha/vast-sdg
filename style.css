@@ -418,3 +418,9 @@ main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{
 .locations{margin:0}
 .locations img{width:100%;height:auto;display:block;border-radius:20px;box-shadow:0 12px 34px rgba(19,62,43,.15);border:1px solid var(--line)}
 .locations figcaption{margin-top:8px;color:var(--muted);font-size:.85rem}
+
+.loc-legend{list-style:none;padding:0;margin:14px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.loc-legend li{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-left:6px solid var(--c);border-radius:12px;padding:12px 14px}
+.loc-legend .n{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font-weight:800}
+.loc-legend strong{display:block}
+.loc-legend small{color:var(--muted)}

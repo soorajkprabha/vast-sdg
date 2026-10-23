@@ -439,3 +439,7 @@ main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{
 .pub .chips{margin:10px 0}
 .pub-link{margin-top:6px}
 @media (max-width:640px){.pub{grid-template-columns:1fr}.pub-cover{width:110px}}
+
+.pub-abs summary{cursor:pointer;color:var(--brand);font-weight:600;margin:8px 0}
+.pub-abs p{color:var(--muted);font-size:.92rem;line-height:1.6}
+.pub-cite.small{font-size:.8rem}

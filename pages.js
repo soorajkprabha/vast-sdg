@@ -98,7 +98,8 @@ const views = {
     $("#pubs").innerHTML = list.length ? list.map(p => {
       const vast = new Set(p.vastAuthors || []);
       const authors = (p.authors || []).map(a => vast.has(a) ? `<strong>${esc(a)}</strong>` : esc(a)).join(", ");
-      const cite = [p.book && `<em>${esc(p.book)}</em>`, p.publisher && esc(p.publisher), p.year && esc(p.year), p.pages && "pp. " + esc(p.pages)].filter(Boolean).join(" · ");
+      const where = [p.book && `In: <em>${esc(p.book)}</em>${p.series ? ` (${esc(p.series)})` : ""}`, p.editors && `ed. ${esc(p.editors)}`].filter(Boolean).join(", ");
+      const cite = [where, p.publisher && esc(p.publisher), p.year && esc(p.year), p.pages && "pp. " + esc(p.pages)].filter(Boolean).join(" · ");
       return `<article class="pub">
         ${p.cover ? `<img class="pub-cover" src="${esc(p.cover)}" alt="Cover of ${esc(p.book || p.title)}" loading="lazy">` : `<div class="pub-cover ph" aria-hidden="true">📘</div>`}
         <div class="pub-body">
@@ -106,9 +107,10 @@ const views = {
           <h3>${esc(p.title)}</h3>
           ${authors ? `<p class="pub-authors">${authors}</p>` : ""}
           <p class="pub-cite">${cite}</p>
-          ${p.abstract ? `<p class="pub-abs">${esc(p.abstract)}</p>` : ""}
+          ${p.isbn ? `<p class="pub-cite small">ISBN ${esc(p.isbn)}</p>` : ""}
+          ${p.abstract ? `<details class="pub-abs"><summary>Abstract</summary><p>${esc(p.abstract)}</p>${p.keywords ? `<p><strong>Keywords:</strong> ${p.keywords.map(esc).join(", ")}</p>` : ""}</details>` : ""}
           <div class="chips">${sdgChips(p.sdgs || [])}</div>
-          ${p.link ? `<a class="mail-btn pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ${p.doi ? "(DOI)" : "chapter"} ↗</a>` : ""}
+          ${p.link ? `<a class="mail-btn pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || "View chapter")} ↗</a>` : ""}
         </div></article>`;
     }).join("") : `<p class="empty">Publications will be listed here soon.</p>`;
   },

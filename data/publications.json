@@ -1,1 +1,59 @@
-[]
+[
+  {
+    "type": "chapter",
+    "title": "Transforming Buildings Emission-Free for Sustainable Development: A Case Study",
+    "book": "Energy Efficiency Improvements with Emission Abatement for Energy Sustainability",
+    "series": "Energy Statistics",
+    "editors": "K. J. Sreekanth",
+    "publisher": "Springer Nature Singapore",
+    "year": 2024,
+    "pages": "123-134",
+    "authors": [
+      "Sooraj K. Prabha"
+    ],
+    "vastAuthors": [
+      "Sooraj K. Prabha"
+    ],
+    "sdgs": [
+      7,
+      11,
+      13
+    ],
+    "abstract": "The rising population and its impact on the environment are big challenges that need to be addressed as a first priority. The rising population and activities for economic growth are causing threats to the ecosystem of this planet. The United Nations has envisaged policies for sustainable development and the goals set for the health of the planet are better known as Sustainable Development Goals. This chapter discusses the need of reducing carbon emission in every activity and the methods to reduce the emission. The building sector takes fourth position while considering global sector wise emissions. A case study is presented in the later part of the chapter to assess the carbon emission by buildings due to energy consumption. The possible/available methods to mitigate emissions thereby making the building emission-free are also discussed.",
+    "isbn": "978-981-97-9479-9 (print), 978-981-97-9480-5 (eBook)",
+    "link": "https://doi.org/10.1007/978-981-97-9480-5",
+    "linkLabel": "View the book (DOI)",
+    "cover": ""
+  },
+  {
+    "type": "chapter",
+    "title": "Carbon Emission - Recent Trends and Shift in Policies in India",
+    "book": "An In-Depth Look at Carbon Emissions",
+    "series": "Pollution Science, Technology and Abatement",
+    "editors": "K. J. Sreekanth",
+    "publisher": "Nova Science Publishers, New York",
+    "year": 2021,
+    "pages": "21-34",
+    "authors": [
+      "Sooraj K. Prabha"
+    ],
+    "vastAuthors": [
+      "Sooraj K. Prabha"
+    ],
+    "sdgs": [
+      7,
+      9,
+      13
+    ],
+    "abstract": "India is one of the fastest-growing economies globally, and, hence, its efforts to curb pollution, carbon emission, in particular, are being meticulously watched. This chapter portrays the carbon emission analysis and the policy shifts that pertain to emission. The main sources of emission are energy, industry, agriculture, etc. The growth in energy and that in the automobile are indicators of economic growth and, hence, they need to be maintained. However, there are clear policy changes in India towards this goal in the recent past by adhering to the Paris protocol, a ray of hope among the adversities. The policies refer to the automobile, energy and industrial sectors, to name a few.",
+    "keywords": [
+      "carbon emission",
+      "green energy",
+      "India policies"
+    ],
+    "isbn": "978-1-68507-190-5",
+    "link": "https://doi.org/10.52305/UTRF8102",
+    "linkLabel": "View the book (DOI)",
+    "cover": "images/publications/in-depth-look-at-carbon-emissions.jpg"
+  }
+]

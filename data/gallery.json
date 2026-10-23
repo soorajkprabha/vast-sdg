@@ -116,5 +116,12 @@
     "facility": "sewage",
     "year": "2024",
     "credit": "VAST"
+  },
+  {
+    "file": "images/gallery/icisst-2026-inauguration.jpg",
+    "caption": "Lighting of the lamp at the inauguration of ICISST 2026",
+    "facility": "conference",
+    "year": "2026",
+    "credit": "VAST"
   }
 ]

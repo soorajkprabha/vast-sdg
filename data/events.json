@@ -1,0 +1,13 @@
+[
+  {
+    "title": "International Conference on Intelligent Systems & Sustainable Technologies (ICISST 2026)",
+    "type": "Conference",
+    "start": "2026-06-26",
+    "end": "2026-06-27",
+    "venue": "Vidya Academy of Science and Technology, Thrissur",
+    "summary": "A two-day international conference bringing together researchers, academicians, industry experts and students across engineering and the basic sciences, on intelligent systems and sustainable technologies. It included a keynote on connecting the SDGs to sustainability research.",
+    "stats": [["27", "research papers"], ["4", "technical tracks"], ["4", "keynote addresses"], ["5", "online expert talks"]],
+    "image": "images/publications/icisst-2026-proceedings.jpg",
+    "links": [["Read the proceedings details", "publications.html"], ["Conference website", "https://icisst.vidyaacademy.ac.in/"]]
+  }
+]

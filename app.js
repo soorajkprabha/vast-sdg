@@ -1,7 +1,7 @@
 import { SDGS, sdgOf } from "./sdgs.js";
 import { mountLayout } from "./layout.js";
 import { loadInitiatives, initiativeCard, sdgChips } from "./initiatives.js";
-import { loadActivities, loadReports } from "./data.js";
+import { loadActivities, loadReports, fetchJson } from "./data.js";
 
 
 const $ = (s, r = document) => r.querySelector(s);
@@ -93,6 +93,32 @@ function renderStats(activities) {
     + (empty.length ? `<p class="bar-gap"><strong>${empty.length} of 17 ${empty.length === 1 ? "goal has" : "goals have"} no recorded activities yet:</strong> ${empty.map(g => `<a href="sdg.html?g=${g.n}">SDG ${g.n} ${esc(g.name)}</a>`).join(", ")}.</p>` : `<p class="bar-gap">Every goal has at least one recorded activity.</p>`);
 }
 
+const fmtRange = (a, b) => {
+  const d1 = new Date(a), d2 = new Date(b || a), mo = { month: "long" };
+  const m1 = d1.toLocaleDateString("en-IN", mo), m2 = d2.toLocaleDateString("en-IN", mo);
+  if (!b || a === b) return fmtDate(a);
+  if (m1 === m2 && d1.getFullYear() === d2.getFullYear()) return `${d1.getDate()}\u2013${d2.getDate()} ${m1} ${d1.getFullYear()}`;
+  return `${fmtDate(a)} \u2013 ${fmtDate(b)}`;
+};
+
+function renderEvents(list) {
+  if (!list.length) return;
+  list.sort((x, y) => (y.start || "").localeCompare(x.start || ""));
+  $("#events").hidden = false;
+  $("#events-strip").innerHTML = list.map(e => `
+    <article class="event">
+      ${e.image ? `<img class="event-img" src="${esc(e.image)}" alt="" loading="lazy">` : ""}
+      <div class="event-body">
+        <span class="event-tag">${esc(e.type || "Event")} · ${fmtRange(e.start, e.end)}</span>
+        <h3>${esc(e.title)}</h3>
+        ${e.venue ? `<p class="event-venue">📍 ${esc(e.venue)}</p>` : ""}
+        <p>${esc(e.summary)}</p>
+        ${(e.stats || []).length ? `<ul class="event-stats">${e.stats.map(([v, l]) => `<li><strong>${esc(v)}</strong><span>${esc(l)}</span></li>`).join("")}</ul>` : ""}
+        <div class="event-links">${(e.links || []).map(([t, u], i) => `<a class="${i ? "btn-outline" : "mail-btn"}" href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${esc(t)}${/^https?:/.test(u) ? " ↗" : ""}</a>`).join("")}</div>
+      </div>
+    </article>`).join("");
+}
+
 async function initHome() {
   navSetup();
   const [activities, reports] = await Promise.all([loadActivities(), loadReports()]);
@@ -108,6 +134,7 @@ async function initHome() {
     </a>`).join("");
 
   renderStats(activities);
+  fetchJson("data/events.json").then(renderEvents).catch(console.error);
   loadInitiatives().then(list => { $("#home-initiatives").innerHTML = list.map(initiativeCard).join(""); }).catch(console.error);
   $("#latest").innerHTML = activities.slice(0, 6).map(a => activityCard(a, activities.indexOf(a))).join("")
     || `<p class="empty">No activities have been added yet.</p>`;

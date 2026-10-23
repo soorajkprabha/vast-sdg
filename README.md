@@ -93,3 +93,6 @@ List book chapters and papers in `data/publications.json`, one object each:
       "abstract": "Optional short summary.", "link": "https://doi.org/...", "doi": true, "cover": "images/publications/book1.jpg" }
 
 `type` is `chapter`, `paper`, `book` or `conference`. `vastAuthors` are shown in bold. Put cover images in `images/publications/` (optional).
+
+## Events strip (home page)
+`data/events.json` feeds the "Events & conferences" strip on the home page (hidden when the list is empty). One object per event: `title`, `type`, `start`/`end` (YYYY-MM-DD), `venue`, `summary`, `stats` (`[["27","research papers"], ...]`), `image`, and `links` (`[["Button text","url"], ...]`; the first link is the highlighted button).

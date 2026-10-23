@@ -55,5 +55,32 @@
     "link": "https://doi.org/10.52305/UTRF8102",
     "linkLabel": "View the book (DOI)",
     "cover": "images/publications/in-depth-look-at-carbon-emissions.jpg"
+  },
+  {
+    "type": "proceedings",
+    "title": "ICISST 2026 Conference Proceedings: International Conference on Intelligent Systems & Sustainable Technologies",
+    "authors": [
+      "Sooraj K. Prabha",
+      "Siju K. C."
+    ],
+    "vastAuthors": [
+      "Sooraj K. Prabha",
+      "Siju K. C."
+    ],
+    "authorRole": "editors",
+    "publisher": "Vidya Academy of Science & Technology, Thrissur",
+    "year": 2026,
+    "event": "Conference held 26-27 June 2026; published 10 October 2026",
+    "sdgs": [
+      7,
+      9,
+      13
+    ],
+    "abstractLabel": "About the proceedings",
+    "abstract": "Compilation of the twenty-seven research papers presented at ICISST 2026, organised under four technical tracks: AI & Machine Learning; Sustainable Technologies; Modeling, Simulation & Engineering Analysis; and Automation & Control Systems. The conference focused on intelligent systems and sustainable technologies, including sustainable infrastructure, renewable energy systems, green manufacturing and electric vehicles.",
+    "isbn": "978-81-685026-1-1 (digital download and online)",
+    "link": "https://icisst.vidyaacademy.ac.in/",
+    "linkLabel": "Conference website",
+    "cover": "images/publications/icisst-2026-proceedings.jpg"
   }
 ]

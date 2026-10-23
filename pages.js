@@ -91,6 +91,28 @@ const views = {
 
   contact() {},
 
+  async publications() {
+    const list = (await fetchJson("data/publications.json")).sort((a, b) => (b.year || 0) - (a.year || 0));
+    $("#pub-count").textContent = list.length ? `${list.length} publication${list.length === 1 ? "" : "s"}` : "";
+    const type = { chapter: "Book chapter", paper: "Journal paper", book: "Book", conference: "Conference paper" };
+    $("#pubs").innerHTML = list.length ? list.map(p => {
+      const vast = new Set(p.vastAuthors || []);
+      const authors = (p.authors || []).map(a => vast.has(a) ? `<strong>${esc(a)}</strong>` : esc(a)).join(", ");
+      const cite = [p.book && `<em>${esc(p.book)}</em>`, p.publisher && esc(p.publisher), p.year && esc(p.year), p.pages && "pp. " + esc(p.pages)].filter(Boolean).join(" · ");
+      return `<article class="pub">
+        ${p.cover ? `<img class="pub-cover" src="${esc(p.cover)}" alt="Cover of ${esc(p.book || p.title)}" loading="lazy">` : `<div class="pub-cover ph" aria-hidden="true">📘</div>`}
+        <div class="pub-body">
+          <span class="pub-type">${esc(type[p.type] || type.chapter)}</span>
+          <h3>${esc(p.title)}</h3>
+          ${authors ? `<p class="pub-authors">${authors}</p>` : ""}
+          <p class="pub-cite">${cite}</p>
+          ${p.abstract ? `<p class="pub-abs">${esc(p.abstract)}</p>` : ""}
+          <div class="chips">${sdgChips(p.sdgs || [])}</div>
+          ${p.link ? `<a class="mail-btn pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">View ${p.doi ? "(DOI)" : "chapter"} ↗</a>` : ""}
+        </div></article>`;
+    }).join("") : `<p class="empty">Publications will be listed here soon.</p>`;
+  },
+
   async about() {
     const d = await fetchJson("data/institute.json");
     $("#stats").innerHTML = d.stats.map(([v, l]) => `<div><strong>${esc(v)}</strong><span>${esc(l)}</span></div>`).join("");
@@ -137,6 +159,6 @@ const views = {
 };
 
 (async () => {
-  try { await views[page](["evidence", "about", "contact"].includes(page) ? null : await loadInitiatives()); }
+  try { await views[page](["evidence", "about", "contact", "publications"].includes(page) ? null : await loadInitiatives()); }
   catch (e) { console.error(e); const el = $("#error"); if (el) el.hidden = false; }
 })();

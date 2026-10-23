@@ -6,7 +6,8 @@ const LINKS = [
   ["solar.html", "Solar", "solar"],
   ["gallery.html", "Gallery", "gallery"],
   ["sdg-mapping.html", "SDG mapping", "mapping"],
-  ["carbon.html", "Carbon impact", "carbon"],
+  ["carbon.html", "Carbon", "carbon"],
+  ["publications.html", "Publications", "publications"],
   ["contact.html", "Contact", "contact"]
 ];
 

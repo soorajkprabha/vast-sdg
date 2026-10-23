@@ -408,7 +408,7 @@ main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{
 
 /* nine links: tighter pills, and the menu collapses earlier */
 #menu a{padding:9px 11px;font-size:.88rem}
-@media (max-width:1040px){
+@media (max-width:1180px){
   .menu-btn{display:block}
   nav#menu{display:none;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 16px 16px}
   nav#menu.open{display:flex}
@@ -424,3 +424,18 @@ main p a:hover,main li a:hover,.callout a:hover,footer a:hover,.bar-gap a:hover{
 .loc-legend .n{display:grid;place-items:center;flex:none;width:34px;height:34px;border-radius:50%;background:var(--c);color:#fff;font-weight:800}
 .loc-legend strong{display:block}
 .loc-legend small{color:var(--muted)}
+
+/* publications */
+.pubs{display:grid;gap:20px}
+.pub{display:grid;grid-template-columns:150px 1fr;gap:22px;background:var(--card);border:1px solid var(--border);border-left:6px solid #00689D;border-radius:16px;padding:20px;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.pub-cover{width:150px;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.2);align-self:start;aspect-ratio:3/4;object-fit:cover}
+.pub-cover.ph{display:grid;place-items:center;background:linear-gradient(135deg,#19486A,#00689D);font-size:3rem}
+.pub-type{display:inline-block;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#00689D}
+.pub h3{margin:4px 0 6px;font-size:1.25rem}
+.pub p{margin:4px 0}
+.pub-authors{color:var(--text)}
+.pub-cite{color:var(--muted)}
+.pub-abs{color:var(--muted);font-size:.92rem}
+.pub .chips{margin:10px 0}
+.pub-link{margin-top:6px}
+@media (max-width:640px){.pub{grid-template-columns:1fr}.pub-cover{width:110px}}

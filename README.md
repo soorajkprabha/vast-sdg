@@ -84,3 +84,12 @@ To add more sources (other tags or the whole site feed), add entries to `data/ne
 3. In this repository: Settings → Secrets and variables → Actions. Add the secret `MIRROR_TOKEN` (the token) and the variable `MIRROR_REPO` (for example `researchcentre/vast-sdg`).
 4. Run Actions → *Mirror to the second repository* → Run workflow once. After that every push is mirrored automatically.
 The weekly news job only runs in this repository.
+
+## Publications page (publications.html)
+List book chapters and papers in `data/publications.json`, one object each:
+
+    { "type": "chapter", "title": "...", "book": "...", "publisher": "...", "year": 2025, "pages": "101-120",
+      "authors": ["A. Author", "B. Author"], "vastAuthors": ["A. Author"], "sdgs": [7, 13],
+      "abstract": "Optional short summary.", "link": "https://doi.org/...", "doi": true, "cover": "images/publications/book1.jpg" }
+
+`type` is `chapter`, `paper`, `book` or `conference`. `vastAuthors` are shown in bold. Put cover images in `images/publications/` (optional).

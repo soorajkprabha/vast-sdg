@@ -1120,5 +1120,20 @@
     "link": "https://news.vidyaacademy.ac.in/2026/01/15/nss-volunteer-receives-guest-invitation-to-attend-republic-day-parade/",
     "image": "",
     "verified": false
+  },
+  {
+    "title": "International Conference on Intelligent Systems & Sustainable Technologies (ICISST 2026)",
+    "date": "2026-06-26",
+    "sdgs": [
+      9,
+      4,
+      13,
+      17
+    ],
+    "department": "Conference",
+    "description": "Two-day international conference held at the college on 26-27 June 2026, bringing together researchers, academicians, industry experts and students across computing, electronics, civil, mechanical and allied engineering fields and the basic sciences. It was inaugurated at the Pranavam Auditorium by Prof. A. Seshadri Sekhar, Director, IIT Palakkad (Chief Guest). Keynotes: Dr. Sreekanth K. J. (Kuwait Institute for Scientific Research) on connecting SDGs to sustainability research; Dr. Soman K. P. (Amrita Vishwa Vidyapeetham); Dr. Krishna Mohan K. S. (CUSAT) on climate change and the boundaries of our planet; and Dr. Padmakumar Nair (Thapar Institute of Engineering and Technology) on higher education in the age of intelligent systems. Five online expert talks were held from 22 to 25 June 2026.",
+    "outcomes": "Twenty-seven research papers were presented under four tracks (AI & Machine Learning; Sustainable Technologies; Modeling, Simulation & Engineering Analysis; Automation & Control Systems). The proceedings were published on 10 October 2026 (ISBN 978-81-685026-1-1).",
+    "link": "publications.html",
+    "image": ""
   }
 ]

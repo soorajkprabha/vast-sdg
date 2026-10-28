@@ -33,7 +33,7 @@ const views = {
     document.title = `${i.name} | Vidya Academy of Science and Technology`;
     $("#init-hero").style.setProperty("--c", i.color);
     if (["#FCC30B"].includes(i.color)) $("#init-hero").classList.add("dark-text");
-    $("#init-icon").textContent = i.icon;
+    $("#init-icon").textContent = i.capacity;
     $("#init-name").textContent = i.name;
     $("#init-outcome").textContent = i.outcome;
     $("#f-cap").textContent = i.capacity;
@@ -42,7 +42,7 @@ const views = {
     $("#i-summary").textContent = i.summary;
     $("#i-does").innerHTML = i.does.map(d => `<li>${esc(d)}</li>`).join("");
     $("#i-note").textContent = i.note;
-    if (i.id === "solar") $("#i-extra").innerHTML = `<a class="btn-primary link-btn" href="solar.html">View solar statistics →</a>`;
+    if (i.id === "solar") $("#i-extra").innerHTML = `<a class="btn-primary link-btn" href="solar.html">View solar statistics</a>`;
     $("#i-primary").innerHTML = sdgChips(i.primary);
     $("#i-secondary").innerHTML = sdgChips(i.secondary);
     $("#i-basis").textContent = "Basis: " + i.basis;
@@ -52,11 +52,11 @@ const views = {
       const mine = g.filter(x => x.facility === i.id);
       if (!mine.length) return fallback();
       photo.classList.remove("empty");
-      photo.innerHTML = `<img src="${esc(mine[0].file)}" alt="${esc(mine[0].caption || i.name)}"><figcaption>${esc(mine[0].caption || i.name)} · <a href="gallery.html?f=${i.id}">See all ${mine.length} photo${mine.length === 1 ? "" : "s"} →</a></figcaption>`;
+      photo.innerHTML = `<img src="${esc(mine[0].file)}" alt="${esc(mine[0].caption || i.name)}"><figcaption>${esc(mine[0].caption || i.name)} · <a href="gallery.html?f=${i.id}">See all ${mine.length} photo${mine.length === 1 ? "" : "s"}</a></figcaption>`;
     }).catch(e => { console.error(e); fallback(); });
     const prev = list[(idx + list.length - 1) % list.length], next = list[(idx + 1) % list.length];
-    $("#i-prev").href = `initiative.html?i=${prev.id}`; $("#i-prev").textContent = `← ${prev.name}`;
-    $("#i-next").href = `initiative.html?i=${next.id}`; $("#i-next").textContent = `${next.name} →`;
+    $("#i-prev").href = `initiative.html?i=${prev.id}`; $("#i-prev").textContent = `Previous: ${prev.name}`;
+    $("#i-next").href = `initiative.html?i=${next.id}`; $("#i-next").textContent = `Next: ${next.name}`;
     $("#init-body").hidden = false;
   },
 
@@ -68,7 +68,7 @@ const views = {
     }).join("")}</tr>`).join("");
     $("#matrix").innerHTML = head + `<tbody>${rows}</tbody>`;
     $("#basis").innerHTML = list.map(i => `<article class="basis-card" style="--c:${i.color}">
-      <h3><a href="initiative.html?i=${i.id}">${i.icon} ${esc(i.name)}</a> <small>${esc(i.capacity)}</small></h3>
+      <h3><a href="initiative.html?i=${i.id}">${esc(i.name)}</a> <small>${esc(i.capacity)}</small></h3>
       <p><strong>Primary:</strong> ${i.primary.map(n => `SDG ${n} ${esc(sdgOf(n).name)}`).join("; ")}</p>
       <p><strong>Supporting:</strong> ${i.secondary.map(n => `SDG ${n} ${esc(sdgOf(n).name)}`).join("; ")}</p>
       <p class="muted">${esc(i.basis)}</p></article>`).join("");
@@ -78,7 +78,7 @@ const views = {
     const max = Math.max(...list.map(i => i.co2.hi));
     $("#co2-chart").innerHTML = list.map(i => `
       <div class="co2-row">
-        <span class="co2-name">${i.icon} ${esc(i.name)}</span>
+        <span class="co2-name">${esc(i.name)}</span>
         <span class="co2-track" role="img" aria-label="${esc(i.name)}: ${esc(i.co2.label)} per year">
           <span class="co2-range" style="left:${i.co2.lo / max * 100}%;width:${Math.max((i.co2.hi - i.co2.lo) / max * 100, 1.2)}%;background:${i.color}"></span>
         </span>
@@ -101,7 +101,7 @@ const views = {
       const where = [p.book && `In: <em>${esc(p.book)}</em>${p.series ? ` (${esc(p.series)})` : ""}`, p.editors && `ed. ${esc(p.editors)}`].filter(Boolean).join(", ");
       const cite = [where, p.publisher && esc(p.publisher), p.year && esc(p.year), p.pages && "pp. " + esc(p.pages), p.event && esc(p.event)].filter(Boolean).join(" · ");
       return `<article class="pub">
-        ${p.cover ? `<img class="pub-cover" src="${esc(p.cover)}" alt="Cover of ${esc(p.book || p.title)}" loading="lazy">` : `<div class="pub-cover ph" aria-hidden="true">📘</div>`}
+        ${p.cover ? `<img class="pub-cover" src="${esc(p.cover)}" alt="Cover of ${esc(p.book || p.title)}" loading="lazy">` : `<div class="pub-cover ph" aria-hidden="true"></div>`}
         <div class="pub-body">
           <span class="pub-type">${esc(type[p.type] || type.chapter)}</span>
           <h3>${esc(p.title)}</h3>
@@ -110,7 +110,7 @@ const views = {
           ${p.isbn ? `<p class="pub-cite small">ISBN ${esc(p.isbn)}</p>` : ""}
           ${p.abstract ? `<details class="pub-abs"><summary>${esc(p.abstractLabel || "Abstract")}</summary><p>${esc(p.abstract)}</p>${p.keywords ? `<p><strong>Keywords:</strong> ${p.keywords.map(esc).join(", ")}</p>` : ""}</details>` : ""}
           <div class="chips">${sdgChips(p.sdgs || [])}</div>
-          ${p.link ? `<a class="mail-btn pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || "View chapter")} ↗</a>` : ""}
+          ${p.link ? `<a class="mail-btn pub-link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.linkLabel || "View chapter")}</a>` : ""}
         </div></article>`;
     }).join("") : `<p class="empty">Publications will be listed here soon.</p>`;
   },
@@ -121,7 +121,7 @@ const views = {
     $("#overview").innerHTML = `<tbody>${d.overview.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}</tbody>`;
     const ul = (id, list) => { $(id).innerHTML = list.map(x => `<li>${esc(x)}</li>`).join(""); };
     ul("#ug", d.graduate); ul("#pg", d.postgraduate); ul("#fac", d.facilities); ul("#gov", d.governance);
-    $("#links").innerHTML = d.links.map(([t, u]) => `<a class="report" href="${esc(u)}" target="_blank" rel="noopener"><span class="pdf" style="background:#00689D">↗</span><span><strong>${esc(t)}</strong><br><small>${esc(u.replace("https://", ""))}</small></span></a>`).join("");
+    $("#links").innerHTML = d.links.map(([t, u]) => `<a class="report" href="${esc(u)}" target="_blank" rel="noopener"><span class="pdf" style="background:#00689D">Web</span><span><strong>${esc(t)}</strong><br><small>${esc(u.replace("https://", ""))}</small></span></a>`).join("");
     $("#source").textContent = `Source: ${d.source} Statistics such as placements and admissions are updated each cycle; verify against the college website before quoting.`;
   },
 

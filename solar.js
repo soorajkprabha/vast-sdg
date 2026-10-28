@@ -193,7 +193,7 @@ function renderCompare() {
 
   const dGen = pct(A.solar, B.solar), dImp = pct(A.grid, B.grid);
   $("#compare-cards").innerHTML = [
-    [fmt1(B.share) + "% → " + fmt1(A.share) + "%", "solar share of electricity", dShare > 0],
+    [fmt1(B.share) + "% to " + fmt1(A.share) + "%", "solar share of electricity", dShare > 0],
     [sign(dGen) + "%", "solar generation per month", dGen > 0],
     [sign(dImp) + "%", "KSEB import per month", dImp < 0]
   ].map(([v, l, ok]) => `<div class="${ok ? "good" : "bad"}"><strong>${v}</strong><span>${l}</span></div>`).join("");
@@ -266,9 +266,9 @@ function renderImpact(rows, t, co2t) {
   const kwh = t.solar, co2kg = co2t * 1000;
   $("#impact-energy").textContent = fmt1(kwh / 1000) + " MWh";
   $("#impact-sub").textContent = `solar generation · ${$("#period-note").textContent}`;
-  const imp = (ico, label, val, sub) => `<div class="card impact-card"><div class="ico" aria-hidden="true">${ico}</div><h4>${label}</h4><div class="v">${val}</div><small>${sub}</small></div>`;
+  const imp = (ico, label, val, sub) => `<div class="card impact-card"><h4>${label}</h4><div class="v">${val}</div><small>${sub}</small></div>`;
   $("#impact-grid").innerHTML = [
-    `<div class="card impact-card wide"><div class="ico" aria-hidden="true">🌍</div><h4>Carbon emissions &amp; potential carbon-credit equivalent</h4><div class="carbon-pair"><div><div class="v">${fmt1(co2t)} t</div><small>estimated CO₂ avoided</small></div><div><div class="v">≈ ${fmt(co2t)}</div><small>carbon-credit equivalent (1 credit = 1 t CO₂). Indicative only: credits exist only once a registry has verified them.</small></div></div></div>`,
+    `<div class="card impact-card wide"><h4>Carbon emissions &amp; potential carbon-credit equivalent</h4><div class="carbon-pair"><div><div class="v">${fmt1(co2t)} t</div><small>estimated CO₂ avoided</small></div><div><div class="v">≈ ${fmt(co2t)}</div><small>carbon-credit equivalent (1 credit = 1 t CO₂). Indicative only: credits exist only once a registry has verified them.</small></div></div></div>`,
     imp("🪨", "Coal equivalent not burned", `${fmt1(kwh * F.coalLo / 1000)}–${fmt1(kwh * F.coalHi / 1000)} t`, `Illustrative range at ${F.coalLo}–${F.coalHi} kg coal per kWh.`),
     imp("🌳", "Mature-tree equivalent", `${fmt(co2kg / F.treeKg)} tree-years`, "CO₂ absorbed by that many mature trees in a year; not trees planted or saved."),
     imp("🏠", "Household electricity equivalent", `${fmt(kwh / F.homeKwh)} home-years`, `At an illustrative ${fmt(F.homeKwh)} kWh per household per year.`),

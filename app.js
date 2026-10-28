@@ -17,18 +17,20 @@ function chips(list) {
 
 function activityCard(a, i) {
   const primary = sdgOf(a.sdgs[0]);
-  const media = a.image
-    ? `<img src="${esc(a.image)}" alt="${esc(a.title)}" loading="lazy">`
-    : `<div class="ph" style="--c:${primary.color}"><span>${primary.n}</span></div>`;
-  return `<article class="activity">
-    ${media}
-    <div class="body">
-      <div class="chips">${chips(a.sdgs)}</div>
+  const d = a.date ? new Date(a.date) : null;
+  const when = d
+    ? `<time class="rec-date" datetime="${esc(a.date)}"><b>${d.getFullYear()}</b><span>${d.toLocaleDateString("en-IN", { day: "numeric", month: "short" })}</span></time>`
+    : `<span class="rec-date"><b>Facility</b><span>ongoing</span></span>`;
+  return `<article class="activity record" style="--c:${primary.color}">
+    ${when}
+    <div class="rec-main">
       <h3>${esc(a.title)}</h3>
-      <p class="meta">${metaLine(a)}</p>
-      <p>${esc(a.description)}</p>
-      <button class="link" data-i="${i}">View details →</button>
+      ${a.department ? `<p class="rec-meta">${esc(a.department)}</p>` : ""}
+      <p class="rec-desc">${esc(a.description)}</p>
+      <div class="chips">${chips(a.sdgs)}</div>
     </div>
+    ${a.image ? `<img class="rec-img" src="${esc(a.image)}" alt="" loading="lazy">` : ""}
+    <button class="link" data-i="${i}">View details</button>
   </article>`;
 }
 
@@ -46,7 +48,7 @@ function wireModal(activities) {
       <p>${esc(a.description)}</p>
       ${a.outcomes ? `<h3>Outcomes</h3><p>${esc(a.outcomes)}</p>` : ""}
       ${a.beneficiaries || a.hours ? `<p class="meta">${[a.beneficiaries ? `<strong>${fmtNum(a.beneficiaries)}</strong> beneficiaries` : "", a.hours ? `<strong>${fmtNum(a.hours)}</strong> volunteer hours` : ""].filter(Boolean).join(" · ")}</p>` : ""}
-      ${a.link ? `<p><a href="${esc(a.link)}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener"' : ""}>${/^https?:/.test(a.link) ? "Read the full report ↗" : "Read more →"}</a></p>` : ""}`;
+      ${a.link ? `<p><a href="${esc(a.link)}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener"' : ""}>${/^https?:/.test(a.link) ? "Read the full report" : "Read more"}</a></p>` : ""}`;
     dlg.showModal();
   });
   $("#modal-close").addEventListener("click", () => dlg.close());
@@ -111,10 +113,10 @@ function renderEvents(list) {
       <div class="event-body">
         <span class="event-tag">${esc(e.type || "Event")} · ${fmtRange(e.start, e.end)}</span>
         <h3>${esc(e.title)}</h3>
-        ${e.venue ? `<p class="event-venue">📍 ${esc(e.venue)}</p>` : ""}
+        ${e.venue ? `<p class="event-venue">${esc(e.venue)}</p>` : ""}
         <p>${esc(e.summary)}</p>
         ${(e.stats || []).length ? `<ul class="event-stats">${e.stats.map(([v, l]) => `<li><strong>${esc(v)}</strong><span>${esc(l)}</span></li>`).join("")}</ul>` : ""}
-        <div class="event-links">${(e.links || []).map(([t, u], i) => `<a class="${i ? "btn-outline" : "mail-btn"}" href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${esc(t)}${/^https?:/.test(u) ? " ↗" : ""}</a>`).join("")}</div>
+        <div class="event-links">${(e.links || []).map(([t, u], i) => `<a class="${i ? "btn-outline" : "mail-btn"}" href="${esc(u)}"${/^https?:/.test(u) ? ' target="_blank" rel="noopener"' : ""}>${esc(t)}</a>`).join("")}</div>
       </div>
     </article>`).join("");
 }
@@ -134,6 +136,8 @@ async function initHome() {
     </a>`).join("");
 
   renderStats(activities);
+  const per = n => activities.filter(a => a.sdgs.includes(n)).length;
+  $("#sdg-strip").innerHTML = SDGS.map(g => `<li style="--c:${g.color};--i:${g.n}"><a href="sdg.html?g=${g.n}" aria-label="Goal ${g.n}, ${esc(g.name)}: ${per(g.n)} activities" title="${esc(g.name)}: ${per(g.n)} activities"><b>${g.n}</b></a></li>`).join("");
   fetchJson("data/events.json").then(renderEvents).catch(console.error);
   loadInitiatives().then(list => { $("#home-initiatives").innerHTML = list.map(initiativeCard).join(""); }).catch(console.error);
   $("#latest").innerHTML = activities.slice(0, 6).map(a => activityCard(a, activities.indexOf(a))).join("")

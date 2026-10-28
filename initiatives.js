@@ -10,7 +10,6 @@ export const sdgChips = (list, cls = "") =>
 
 export function initiativeCard(i) {
   return `<a class="init-card" style="--c:${i.color}" href="initiative.html?i=${i.id}">
-    <span class="init-icon" aria-hidden="true">${i.icon}</span>
     <span class="init-theme">${esc(i.theme)}</span>
     <h3>${esc(i.name)}</h3>
     <strong class="init-cap">${esc(i.capacity)}</strong>

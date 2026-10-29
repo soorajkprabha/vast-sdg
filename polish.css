@@ -105,11 +105,16 @@ th,td{padding:11px 14px}
 
 /* ---------- SDG chips and goal tiles ---------- */
 .chip{border-radius:var(--r1);padding:2px 9px;font-weight:700;font-size:.8rem}
-.goals{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px;margin-top:24px}
-.goal{border-radius:0;min-height:158px;padding:16px 16px 14px}
-.goal .num{font-family:var(--display);font-size:3.2rem;font-weight:700;letter-spacing:-.03em}
-.goal .name{text-transform:none;letter-spacing:0;font-weight:600;font-size:1.02rem;line-height:1.2}
-.goal .count{font-size:.88rem;opacity:.95}
+.goals{grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px;margin-top:24px}
+.goal{display:flex;flex-direction:column;min-height:0;padding:0;border-radius:var(--r1);overflow:hidden;background:var(--card);border:1px solid var(--rule);border-bottom:5px solid var(--c);color:var(--text)}
+.goal .icon{position:static;width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block}
+.goal .num,.goal .name{display:none}
+.goal .count{padding:9px 12px;font-size:.92rem;font-weight:600;color:var(--text);opacity:1}
+.goal:hover{background:var(--alt)}
+/* fallback when an icon file is missing */
+.goal:not(:has(.icon)){background:var(--c);color:#fff;min-height:150px;padding:14px;border:0}
+.goal:not(:has(.icon)) .num,.goal:not(:has(.icon)) .name{display:block}
+.goal:not(:has(.icon)) .count{color:#fff;padding:6px 0 0}
 
 /* ---------- activities as dated records ---------- */
 .activities{display:block;border-top:1px solid var(--rule);margin-top:8px}
@@ -140,8 +145,15 @@ th,td{padding:11px 14px}
 .init-cap{font-size:1.7rem;font-weight:700;color:var(--text)}
 .detail .facts{gap:14px}
 .fact strong{font-size:1.7rem;color:var(--text)}
-.goal-hero{padding:44px 0}
-.goal-title h1{text-transform:none}
+.goal-hero{background:var(--card);color:var(--text);padding:28px 0 0;border-bottom:8px solid var(--c)}
+.goal-hero .container{padding-bottom:28px}
+.goal-title{margin-top:16px;gap:28px}
+.goal-title h1{text-transform:none;color:var(--text);font-size:clamp(1.8rem,4vw,2.8rem)}
+.goal-icon{width:clamp(120px,16vw,176px);border-radius:var(--r1);flex:none}
+.big-num{color:var(--c)}
+.goal-hero .lead{color:var(--muted);margin-top:16px}
+.goal-hero .back,.goal-hero .pager a{color:var(--brand);opacity:1}
+.goal-hero .pager{margin-top:20px}
 .big-num{font-family:var(--display);font-weight:700;letter-spacing:-.03em}
 .back,.pager a{font-weight:600}
 

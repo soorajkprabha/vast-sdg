@@ -237,3 +237,11 @@ footer .ver{opacity:.6}
 .key-cols ol{margin:0;padding-left:2em}
 .key-cols li{padding:2px 0}
 @media (max-width:820px){.campus-layout{grid-template-columns:1fr;gap:24px}.layout-fig{max-width:420px}}
+
+/* ---------- activities per goal: hover without underline ---------- */
+.bar-row{padding:3px 6px;margin:0 -6px;border-radius:var(--r1)}
+.bar-row:hover .bar-label{text-decoration:none}
+.bar-row:hover{background:var(--alt)}
+.bar-row:hover .bar-label{color:var(--brand);font-weight:600}
+.bar-row:hover .bar-fill{filter:brightness(.88)}
+.bar-row:focus-visible{background:var(--alt)}

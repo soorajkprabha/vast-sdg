@@ -17,7 +17,7 @@ export function mountLayout(page) {
   const footer = document.getElementById("footer");
   if (header) {
     header.innerHTML = `<div class="container nav">
-      <a href="index.html" class="brand"><img class="logo-img" src="images/logo.png" alt="Vidya Academy of Science and Technology logo" onerror="this.outerHTML='<span class=&quot;logo&quot;>V</span>'"><span>Vidya Academy <small>SDG Activities</small></span></a>
+      <a href="index.html" class="brand"><img class="logo-img" src="images/logo.png?v=2" alt="Vidya Academy of Science and Technology logo" onerror="this.outerHTML='<span class=&quot;logo&quot;>V</span>'"><span>Vidya Academy <small>SDG Activities</small></span></a>
       <button class="menu-btn" aria-label="Toggle menu" aria-expanded="false">☰</button>
       <nav id="menu">${LINKS.map(([h, t, k]) => `<a href="${h}"${k === active ? ' class="current" aria-current="page"' : ""}>${t}</a>`).join("")}</nav>
     </div>`;

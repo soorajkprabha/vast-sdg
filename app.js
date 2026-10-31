@@ -30,7 +30,9 @@ function activityCard(a, i) {
       <div class="chips">${chips(a.sdgs)}</div>
     </div>
     ${a.image ? `<img class="rec-img" src="${esc(a.image)}" alt="" loading="lazy">` : ""}
-    <button class="link" data-i="${i}">View details</button>
+    ${a.link
+      ? `<a class="link" href="${esc(a.link)}"${/^https?:/.test(a.link) ? ' target="_blank" rel="noopener" aria-label="Read full report: ' + esc(a.title) + ' (opens in a new tab)"' : ""}>${/^https?:/.test(a.link) ? "Read full report" : "Read more"}</a>`
+      : `<button class="link" data-i="${i}">View details</button>`}
   </article>`;
 }
 

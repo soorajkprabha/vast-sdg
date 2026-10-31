@@ -245,3 +245,6 @@ footer .ver{opacity:.6}
 .bar-row:hover .bar-label{color:var(--brand);font-weight:600}
 .bar-row:hover .bar-fill{filter:brightness(.88)}
 .bar-row:focus-visible{background:var(--alt)}
+
+/* record action: works for both <a> and <button> */
+.record .link{display:inline-block;text-decoration:none;text-align:center;white-space:nowrap;line-height:1.2}

@@ -87,6 +87,7 @@ function renderStats(activities) {
   const empty = SDGS.filter((g, i) => !counts[i]);
   $("#bars").innerHTML = SDGS.map((g, i) => `
     <a class="bar-row${counts[i] ? "" : " zero"}" href="sdg.html?g=${g.n}">
+      <span class="bar-code">SDG ${g.n}</span>
       <span class="bar-badge" style="--c:${g.color}"><img src="images/sdg/${g.n}.png" alt="" onerror="this.remove()"><b>${g.n}</b></span>
       <span class="bar-label">${esc(g.name)}</span>
       <span class="bar-track">${counts[i] ? `<span class="bar-fill" style="width:${counts[i] / max * 100}%;background:${g.color}"></span>` : `<span class="bar-none">No activities yet</span>`}</span>

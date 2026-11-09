@@ -106,3 +106,6 @@ One-time setup:
 3. In this repository: Settings → Secrets and variables → Actions → Variables → New repository variable named `SOLAR_CSV_URL` with that link.
 
 Only months that are not yet on the site and have every figure are added (the 120 kWp column is required from April 2026). Months already on the site are never changed: if the sheet disagrees with them, the differences are listed in the pull request or the Action log. Test locally with `python3 scripts/fetch_solar.py --csv file.csv`.
+
+## SDG targets (1.1, 1.2, 1.a …)
+`data/sdg-targets.json` holds the official wording of all 169 SDG targets (from the MIT-licensed Open SDG translations of the UN text). Each activity in `data/activities.json` can have a `"targets": ["7.2", "13.2"]` list; every target must belong to one of the activity's `sdgs`. Targets show as small codes on activity rows (hover for the wording) and as a "Targets addressed" list on each goal page. The current assignments were proposed from activity titles and are pending SDG/IQAC review; edit the `targets` arrays to correct them. The weekly news importer does not suggest targets, and the Firebase admin form does not edit them yet.

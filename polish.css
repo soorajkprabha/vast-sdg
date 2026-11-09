@@ -235,3 +235,19 @@ footer .ver{opacity:.6}
 
 /* record action: works for both <a> and <button> */
 .record .link{display:inline-block;text-decoration:none;text-align:center;white-space:nowrap;line-height:1.2}
+
+/* ---------- SDG targets ---------- */
+.targets{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.tgt{display:inline-block;padding:1px 7px;border:1px solid var(--rule);border-radius:var(--r1);background:var(--card);color:var(--muted);font-size:.8rem;font-weight:600;font-variant-numeric:tabular-nums;cursor:help}
+.target-list{list-style:none;margin:16px 0 0;padding:0;border-top:1px solid var(--rule)}
+.target-list li{display:grid;grid-template-columns:64px minmax(0,1fr) auto;gap:6px 18px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule)}
+.tgt-code{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--text);border-left:6px solid var(--c,var(--rule));padding-left:10px}
+.tgt-code.plain{border-left-color:var(--rule);color:var(--muted)}
+.tgt-text{max-width:75ch}
+.tgt-count{color:var(--muted);font-size:.92rem;white-space:nowrap}
+.target-list.plain li{grid-template-columns:64px minmax(0,1fr);color:var(--muted);padding:8px 0}
+#goal-targets{margin-bottom:48px}
+#goal-targets .map-key{margin-top:16px}
+@media (max-width:600px){.target-list li{grid-template-columns:56px minmax(0,1fr)}.tgt-count{grid-column:2}}
+.section .target-list li{max-width:none}
+#goal-targets{margin-top:44px}

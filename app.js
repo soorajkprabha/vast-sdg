@@ -11,6 +11,11 @@ const metaLine = a => [fmtDate(a.date), a.department].filter(Boolean).map(esc).j
 const byDate = (a, b) => (b.date || "").localeCompare(a.date || "");
 const fmtNum = n => n.toLocaleString("en-IN");
 
+let TARGETS = {};
+const loadTargets = () => fetchJson("data/sdg-targets.json").then(t => { TARGETS = t; }).catch(() => {});
+const targetChips = a => (a.targets || []).length
+  ? `<div class="targets" aria-label="SDG targets">${a.targets.map(t => `<span class="tgt" title="Target ${t}: ${esc(TARGETS[t] || "")}">${t}</span>`).join("")}</div>` : "";
+
 function chips(list) {
   return list.map(n => `<a class="chip" style="--c:${sdgOf(n).color}" href="sdg.html?g=${n}">SDG ${n}</a>`).join("");
 }
@@ -28,6 +33,7 @@ function activityCard(a, i) {
       ${a.department ? `<p class="rec-meta">${esc(a.department)}</p>` : ""}
       <p class="rec-desc">${esc(a.description)}</p>
       <div class="chips">${chips(a.sdgs)}</div>
+      ${targetChips(a)}
     </div>
     ${a.image ? `<img class="rec-img" src="${esc(a.image)}" alt="" loading="lazy">` : ""}
     ${a.link
@@ -44,6 +50,7 @@ function wireModal(activities) {
     const a = activities[b.dataset.i];
     $("#modal-body").innerHTML = `
       <div class="chips">${chips(a.sdgs)}</div>
+      ${targetChips(a)}
       <h2>${esc(a.title)}</h2>
       <p class="meta">${metaLine(a)}</p>
       ${a.image ? `<img class="full" src="${esc(a.image)}" alt="${esc(a.title)}">` : ""}
@@ -125,7 +132,7 @@ function renderEvents(list) {
 
 async function initHome() {
   navSetup();
-  const [activities, reports] = await Promise.all([loadActivities(), loadReports()]);
+  const [activities, reports] = await Promise.all([loadActivities(), loadReports(), loadTargets()]);
   activities.sort(byDate);
   const count = n => activities.filter(a => a.sdgs.includes(n)).length;
 
@@ -152,6 +159,18 @@ async function initHome() {
   wireModal(activities);
 }
 
+function renderTargets(n, g, mine) {
+  const codes = Object.keys(TARGETS).filter(c => c.split(".")[0] === String(n));
+  if (!codes.length) return;
+  const per = c => mine.filter(a => (a.targets || []).includes(c)).length;
+  const hit = codes.filter(c => per(c));
+  $("#goal-targets").hidden = false;
+  $("#targets-summary").textContent = `${hit.length} of ${codes.length} targets under this goal have recorded activities.`;
+  $("#targets-list").innerHTML = hit.map(c => `<li style="--c:${g.color}"><span class="tgt-code">${c}</span><span class="tgt-text">${esc(TARGETS[c])}</span><span class="tgt-count">${per(c)} activit${per(c) === 1 ? "y" : "ies"}</span></li>`).join("")
+    || `<li class="empty">No targets mapped yet.</li>`;
+  $("#targets-all").innerHTML = codes.filter(c => !per(c)).map(c => `<li><span class="tgt-code plain">${c}</span><span class="tgt-text">${esc(TARGETS[c])}</span></li>`).join("");
+}
+
 async function initGoal() {
   navSetup();
   const n = Math.min(17, Math.max(1, parseInt(new URLSearchParams(location.search).get("g")) || 1));
@@ -167,8 +186,10 @@ async function initGoal() {
   $("#prev").href = `sdg.html?g=${n === 1 ? 17 : n - 1}`;
   $("#next").href = `sdg.html?g=${n === 17 ? 1 : n + 1}`;
 
-  const all = (await loadActivities()).sort(byDate);
+  const [loaded] = await Promise.all([loadActivities(), loadTargets()]);
+  const all = loaded.sort(byDate);
   const mine = all.filter(a => a.sdgs.includes(n));
+  renderTargets(n, g, mine);
   const benef = mine.reduce((s, a) => s + (a.beneficiaries || 0), 0);
   $("#goal-count").textContent = `${mine.length} activit${mine.length === 1 ? "y" : "ies"}${benef ? ` · ${fmtNum(benef)} beneficiaries` : ""}`;
   $("#activities").innerHTML = mine.length

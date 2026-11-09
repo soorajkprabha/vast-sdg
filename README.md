@@ -96,3 +96,13 @@ List book chapters and papers in `data/publications.json`, one object each:
 
 ## Events strip (home page)
 `data/events.json` feeds the "Events & conferences" strip on the home page (hidden when the list is empty). One object per event: `title`, `type`, `start`/`end` (YYYY-MM-DD), `venue`, `summary`, `stats` (`[["27","research papers"], ...]`), `image`, and `links` (`[["Button text","url"], ...]`; the first link is the highlighted button).
+
+## Monthly solar update from the college sheet
+`scripts/fetch_solar.py` adds new months to `data/solar.json` from a Google Sheet tab that is published as CSV. The GitHub Action `.github/workflows/fetch-solar.yml` runs it on the 12th of every month (or on demand: Actions → *Propose new solar readings* → Run workflow) and opens a pull request; merge it to publish.
+
+One-time setup:
+1. In the college sheet, add a tab (for example "Website") with the header `Month | 15 kWp | 100 kWp | 120 kWp | KSEB import | Export`, filled by formulas from the main tab. Use only these columns: the main tab also holds bill amounts, which must not be published.
+2. File → Share → Publish to web → choose that tab and the format **Comma-separated values (.csv)** → Publish. Copy the link.
+3. In this repository: Settings → Secrets and variables → Actions → Variables → New repository variable named `SOLAR_CSV_URL` with that link.
+
+Only months that are not yet on the site and have every figure are added (the 120 kWp column is required from April 2026). Months already on the site are never changed: if the sheet disagrees with them, the differences are listed in the pull request or the Action log. Test locally with `python3 scripts/fetch_solar.py --csv file.csv`.

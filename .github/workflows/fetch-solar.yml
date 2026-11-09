@@ -1,0 +1,40 @@
+name: Propose new solar readings
+
+on:
+  schedule:
+    - cron: "30 3 12 * *"   # 12th of every month, 09:00 IST
+  workflow_dispatch:         # "Run workflow" button in the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  fetch:
+    # Only the primary repository runs this; the mirror just receives its results.
+    if: github.repository == 'soorajkprabha/vast-sdg'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read the published sheet and add new months
+        env:
+          SOLAR_CSV_URL: ${{ vars.SOLAR_CSV_URL }}
+        run: python3 scripts/fetch_solar.py | tee fetch-solar.log
+      - name: Open or update the review pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain data)" ]; then echo "No new readings."; exit 0; fi
+          git config user.name "vast-sdg-bot"
+          git config user.email "vast-sdg-bot@users.noreply.github.com"
+          git checkout -B solar-update
+          git add data
+          git commit -m "Solar data: add new monthly readings from the college sheet"
+          git push -f origin solar-update
+          if [ "$(gh pr list --head solar-update --state open --json number --jq length)" = "0" ]; then
+            gh pr create --base main --head solar-update \
+              --title "New solar readings to review" \
+              --body "New months were found in the college electricity sheet. Check the figures against the sheet, then merge to publish them on the Solar page.
+
+          $(cat fetch-solar.log)"
+          fi

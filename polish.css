@@ -65,7 +65,7 @@ a,button{transition:background-color .15s,color .15s,border-color .15s}
 
 /* ---------- heroes ---------- */
 .rainbow{height:6px}
-.hero{padding:96px 0 0;background:linear-gradient(90deg,rgba(16,40,63,.86) 0%,rgba(16,40,63,.58) 52%,rgba(16,40,63,.12) 100%),url(images/campus-front.jpg) center 62%/cover #19486A}
+.hero{padding:96px 0 0;background:linear-gradient(90deg,rgba(16,40,63,.86) 0%,rgba(16,40,63,.58) 52%,rgba(16,40,63,.12) 100%),url(images/campus-aerial.jpg) center 55%/cover #19486A}
 .hero .container{padding-bottom:0}
 .hero h1{color:#fff;max-width:16ch;text-shadow:0 2px 18px rgba(0,20,40,.45)}
 .hero .lead{color:#E3EEF7;text-shadow:0 1px 10px rgba(0,20,40,.5)}

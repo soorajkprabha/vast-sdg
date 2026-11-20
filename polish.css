@@ -251,3 +251,17 @@ footer .ver{opacity:.6}
 @media (max-width:600px){.target-list li{grid-template-columns:56px minmax(0,1fr)}.tgt-count{grid-column:2}}
 .section .target-list li{max-width:none}
 #goal-targets{margin-top:44px}
+
+/* ---------- carbon avoided by solar (24 months) ---------- */
+.avoided{margin-top:44px}
+.avoid-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.avoid-main{display:flex;flex-direction:column;gap:4px;padding:24px 26px;background:var(--card);border:1px solid var(--rule);border-left:6px solid #3F7E44;border-radius:var(--r2)}
+.avoid-main span{color:var(--muted)}
+.avoid-main b{font-family:var(--display);font-size:clamp(2.2rem,6vw,3.4rem);line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.avoid-main small{color:var(--muted);max-width:52ch}
+.avoid-plants{list-style:none;margin:0;padding:0;border:1px solid var(--rule);border-radius:var(--r2);background:var(--card);align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.avoid-plants li{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 18px;border-bottom:1px solid var(--rule);border-left:6px solid var(--c)}
+.avoid-plants li:last-child{border-bottom:0}
+.avoid-plants small{color:var(--muted)}
+.avoid-plants b{font-family:var(--display);font-variant-numeric:tabular-nums}
+@media (max-width:760px){.avoid-grid{grid-template-columns:1fr}}

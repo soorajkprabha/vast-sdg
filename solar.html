@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Solar Statistics | Vidya Academy of Science and Technology</title>
-<link rel="stylesheet" href="style.css?v=11091654a">
-<link rel="stylesheet" href="polish.css?v=11091654a">
+<link rel="stylesheet" href="style.css?v=11201445c">
+<link rel="stylesheet" href="polish.css?v=11201445c">
 </head>
 <body data-page="solar">
 <header class="site-header" id="header"></header>
@@ -44,6 +44,16 @@
       <section id="tab-overview">
         <div class="big-total"><span>Total solar energy generated</span><b id="big-total"></b><small id="big-sub"></small></div>
         <div class="grid kpi-grid" id="kpis"></div>
+
+        <section class="avoided" aria-labelledby="avoid-h">
+          <div class="section-heading"><h2 id="avoid-h">Carbon emissions avoided by solar</h2><p>Last 24 months, from the solar plants alone. This figure does not change with the period chosen above.</p></div>
+          <div class="avoid-grid">
+            <div class="avoid-main"><span>Estimated CO₂ avoided</span><b id="avoid-total"></b><small id="avoid-sub"></small></div>
+            <ul id="avoid-plants" class="avoid-plants"></ul>
+          </div>
+          <div class="chart-card"><div class="legend" id="legend-avoid"></div><div id="chart-avoid"></div></div>
+          <p id="avoid-note" class="muted small"></p>
+        </section>
 
         <div class="section-heading"><h2>Where is the energy coming from?</h2><p>Each installation compared for the selected period.</p></div>
         <div class="plant-grid" id="plants"></div>
